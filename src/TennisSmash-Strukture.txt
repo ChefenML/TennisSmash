@@ -8,7 +8,7 @@ Tennis Smash
 │   ├── Members.java                SuperClass
 │   ├── Junior.java                 Kids
 │   ├── Senior.java                 Adults
-│   ├── Pensioner.java              Pensioners
+│   ├── Pensioner.java              Veterans
 │   └── MemberFactory.java          Creating Member
 │
 ├── Filehandler/
@@ -35,6 +35,19 @@ Tennis Smash
 │   ├── EmergencyDoor.java
 │   ├── EmergencyControl.java
 │   └── EmergencyFactory.java
+│
+├── Data/
+│   ├── Bank/
+│   │   ├── payments.csv                Outstanding debt data
+│   │   └── member.csv                  Historic member data
+│   │
+│   └── Match/
+│       ├── trainingJunior.csv          Training data: Junior
+│       ├── trainingSenior.csv          Training data: Senior
+│       ├── trainingVeterans.csv        Training data: Veterans
+│       ├── matchJunior.csv             Match data: Junior
+│       ├── matchSenior.csv             Match data: Senior
+│       └── matchVeterans.csv           Match data: Veterans
 │
 └── UI/
     ├── Swing.java                  GFX UI?
