@@ -1,0 +1,34 @@
+Tennis Smash
+
+├──app/
+│      ├── ElevatorSystem.java
+│      └── Main.java                Run
+│
+├── interfaces/
+│   ├── Members.java                SuperClass
+│   ├── Junior.java                 Kids
+│   ├── Senior.java                 Adults
+│   ├── Pensioner.java              Pensioners
+│   └── MemberFactory.java          Creating Member
+│
+├── Filehandler/
+│   ├── FileHandler.java            Filehandler
+│   ├── StandardDoor.java
+│   ├── StandardControl.java
+│   └── StandardFactory.java
+│
+├── ExceptionHandler/
+│   ├── CustomExceptions.java       SuperClass
+│   ├── IOE.java
+│   ├── ILLInput.java
+│   └── AnotherError.java
+│
+├── Validators/
+│   ├── Needed?.java
+│   ├── EmergencyDoor.java
+│   ├── EmergencyControl.java
+│   └── EmergencyFactory.java
+│
+└── UI/
+    ├── Swing.java
+    └── Console.java
