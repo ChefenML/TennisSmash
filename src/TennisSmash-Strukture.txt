@@ -5,10 +5,11 @@ Tennis Smash
 │      └── Main.java                Run
 │
 ├── Members/
-│   ├── Members.java                SuperClass
-│   ├── Junior.java                 Kids
-│   ├── Senior.java                 Adults
-│   ├── Pensioner.java              Veterans
+│   ├── Members.java                SuperClass: memberFee()
+│   ├── Junior.java                 Kids <18
+│   ├── Senior.java                 Adults 18<x<60
+│   ├── Veteran.java                Veterans 60+
+│   ├── Passive.java                Passive <InActive>
 │   └── MemberFactory.java          Creating Member
 │
 ├── Filehandler/
