@@ -1,10 +1,10 @@
 Tennis Smash
 
 ├──app/
-│      ├── ElevatorSystem.java
+│      ├── Something?.java
 │      └── Main.java                Run
 │
-├── interfaces/
+├── Members/
 │   ├── Members.java                SuperClass
 │   ├── Junior.java                 Kids
 │   ├── Senior.java                 Adults
@@ -23,6 +23,13 @@ Tennis Smash
 │   ├── ILLInput.java
 │   └── AnotherError.java
 │
+├── Match/
+│   ├── Match.java                  Super
+│   ├── Training.java               Træning
+│   ├── Single.java                 Single Kamp
+│   ├── Double.java                 Double Kamp
+│   └── Mix                         Mix Kamp
+│
 ├── Validators/
 │   ├── Needed?.java
 │   ├── EmergencyDoor.java
@@ -30,5 +37,5 @@ Tennis Smash
 │   └── EmergencyFactory.java
 │
 └── UI/
-    ├── Swing.java
-    └── Console.java
+    ├── Swing.java                  GFX UI?
+    └── Console.java                Console UI
