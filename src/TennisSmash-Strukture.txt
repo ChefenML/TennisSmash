@@ -4,12 +4,16 @@ Tennis Smash
 │      ├── Something?.java
 │      └── Main.java                Run
 │
+├── Colorcoding/
+│   ├── Colors.java                 Colors of the world
+│   └── MoreThanOne?.java
+│
 ├── Members/
 │   ├── Members.java                SuperClass: memberFee()
 │   ├── Junior.java                 Kids <18
 │   ├── Senior.java                 Adults 18<x<60
 │   ├── Veteran.java                Veterans 60+
-│   ├── Passive.java                Passive <InActive>
+│   ├── Passive.java                Passive <notActive>
 │   └── MemberFactory.java          Creating Member
 │
 ├── Filehandler/
@@ -32,10 +36,16 @@ Tennis Smash
 │   └── Mix                         Mix Kamp
 │
 ├── Validators/
-│   ├── Needed?.java
+│   ├── Needed?.java                Stuff might need validation
 │   ├── EmergencyDoor.java
 │   ├── EmergencyControl.java
 │   └── EmergencyFactory.java
+│
+├── Sorting/                        Sort stuff
+│   ├── Comparator.java
+│   ├── something.java
+│   ├── somethingelse.java
+│   └── Evenmorenothing.java
 │
 ├── Data/
 │   ├── Bank/
