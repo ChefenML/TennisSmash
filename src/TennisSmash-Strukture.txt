@@ -6,7 +6,7 @@ Tennis Smash
 │
 ├── Colorcoding/
 │   ├── Colors.java                 Colors of the world
-│   └── MoreThanOne?.java
+│   └── Anchiicode.java
 │
 ├── Members/
 │   ├── Members.java                SuperClass: memberFee()
@@ -43,7 +43,7 @@ Tennis Smash
 │
 ├── Sorting/                        Sort stuff
 │   ├── Comparator.java
-│   ├── something.java
+│   ├── Comparable.java
 │   ├── somethingelse.java
 │   └── Evenmorenothing.java
 │
