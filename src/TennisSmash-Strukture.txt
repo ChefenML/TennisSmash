@@ -60,6 +60,13 @@ Tennis Smash
 │       ├── matchSenior.csv             Match data: Senior
 │       └── matchVeterans.csv           Match data: Veterans
 │
-└── UI/
+├── UnitTest/
+│   ├── MemberTest.java                 Test stuff
+│   ├── TestOnTest.java                 Test Goes Here
+│   └── RememberStuffTest.csv           Historic member data
+│
+│
+│
+└── SmashUI/
     ├── Swing.java                  GFX UI?
     └── Console.java                Console UI

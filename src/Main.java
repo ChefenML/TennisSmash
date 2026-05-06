@@ -11,6 +11,12 @@ void main() {
 
     checkmarks();
 
+    LocalDate demi = LocalDate.of(2004,10,20);
+    LocalDate current = LocalDate.now();
+
+    Period different = Period.between(demi, current);
+    System.out.println(different.getYears());
+
 
 }
 
