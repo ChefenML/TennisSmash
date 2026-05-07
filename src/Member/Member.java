@@ -1,6 +1,9 @@
 package Member;
 
-public class Member implements SmashFee {
+import java.time.LocalDate;
+import java.time.Period;
+
+public abstract class Member implements SmashFee {
 
     //Private variable så vi kun kan tilgå dem i denne klasse. (Incapsulation)
     private String name;
@@ -21,6 +24,7 @@ public class Member implements SmashFee {
         this.birthDay = birthDay;
     }
 
+    //Getters
     public String getName() {
         return name;
     }
@@ -43,6 +47,12 @@ public class Member implements SmashFee {
 
     public int getBirthDay() {
         return birthDay;
+    }
+
+    public Period getAge(){
+        LocalDate birthDate = LocalDate.of(birthYear, birthMonth, birthDay);
+        LocalDate today = LocalDate.now();
+        return Period.between(birthDate, today);
     }
 
     @Override
