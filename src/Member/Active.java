@@ -21,6 +21,14 @@ public abstract class Active extends Member {
         return exercise;
     }
 
+    public void setGameType(GameTypes gameType) {
+        this.gameType = gameType;
+    }
+
+    public void setExercise(Exerciser exercise) {
+        this.exercise = exercise;
+    }
+
 
 
 }
