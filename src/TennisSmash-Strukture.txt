@@ -13,14 +13,15 @@ Tennis Smash
 │   ├── Junior.java                 Kids <18
 │   ├── Senior.java                 Adults 18<x<60
 │   ├── Veteran.java                Veterans 60+
-│   ├── Passive.java                Passive <notActive>
+│   ├── Passive.java                Passive: Support club without playing
+│   ├── Active.java                 Active: ParentClass of Junior,Senior & Veteran
 │   └── MemberFactory.java          Creating Member
 │
 ├── Filehandler/
 │   ├── FileHandler.java            Filehandler
-│   ├── StandardDoor.java
-│   ├── StandardControl.java
-│   └── StandardFactory.java
+│   ├── //StandardDoor.java
+│   ├── //StandardControl.java
+│   └── //StandardFactory.java
 │
 ├── ExceptionHandler/
 │   ├── CustomExceptions.java       SuperClass
@@ -68,5 +69,5 @@ Tennis Smash
 │
 │
 └── SmashUI/
-    ├── Swing.java                  GFX UI?
+    ├── GUI.java                  GFX UI?
     └── Console.java                Console UI
