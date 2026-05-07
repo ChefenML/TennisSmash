@@ -1,6 +1,6 @@
 package Member;
 
-public class Active extends Member {
+public abstract class Active extends Member {
     private GameTypes gameType;
     private Exerciser exercise;
 
