@@ -1,5 +1,5 @@
 package Member;
 
 public interface SmashFee {
-    void membersFee();
+    double membersFee();
 }
