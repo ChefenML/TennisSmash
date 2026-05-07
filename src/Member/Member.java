@@ -1,6 +1,6 @@
 package Member;
 
-public class Member {
+public class Member implements SmashFee {
 
     //Private variable så vi kun kan tilgå dem i denne klasse. (Incapsulation)
     private String name;
@@ -21,5 +21,32 @@ public class Member {
         this.birthDay = birthDay;
     }
 
+    public String getName() {
+        return name;
+    }
 
+    public int getMemberID() {
+        return memberID;
+    }
+
+    public char getGender() {
+        return gender;
+    }
+
+    public int getBirthYear() {
+        return birthYear;
+    }
+
+    public int getBirthMonth() {
+        return birthMonth;
+    }
+
+    public int getBirthDay() {
+        return birthDay;
+    }
+
+    @Override
+    public void membersFee() {
+
+    }
 }
