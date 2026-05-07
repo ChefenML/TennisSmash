@@ -33,8 +33,11 @@ public class Filehandler {
             int birthYear = Integer.parseInt(memberData[3]);
             int birthMonth = Integer.parseInt(memberData[4]);
             int birthDayOfMonth = Integer.parseInt(memberData[5]);
+
+            //opret tjek på parsed data om alder
             LocalDate completeBirthday =  LocalDate.of(birthYear,birthMonth,birthDayOfMonth);
             Period getPeriod = Period.between(completeBirthday,LocalDate.now());
+
             GameTypes gameType = GameTypes.valueOf(memberData[6]);
             Exerciser exerciser = Exerciser.valueOf(memberData[7]);
 
@@ -47,6 +50,12 @@ public class Filehandler {
             if(getPeriod.getYears() >= 60){
                 newMember = new Veteran(name, memberID, gender, birthYear, birthMonth, birthDayOfMonth,gameType,exerciser);
             }
+
+            //Bedre bare at sige "resten" ?
+            if(memberData.length == 6){
+                newMember = new Passive(name, memberID, gender, birthYear,birthMonth,birthDayOfMonth);
+            }
+
 
             memberList.add(newMember);
             /* Member Data
