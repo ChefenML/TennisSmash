@@ -10,7 +10,6 @@ public abstract class Active extends Member {
         this.exercise = exercise;
     }
     @Override public double membersFee() {
-        return  0.0;
     }
 
     public GameTypes getGameType() {
