@@ -29,21 +29,21 @@ public class Filehandler {
 
             String name = memberData[0];
             int memberID = Integer.parseInt(memberData[1]);
-            char gender = line.charAt(Integer.parseInt(memberData[2]));//???
+            char gender = memberData[2].charAt(0);
             int birthYear = Integer.parseInt(memberData[3]);
             int birthMonth = Integer.parseInt(memberData[4]);
             int birthDayOfMonth = Integer.parseInt(memberData[5]);
             LocalDate completeBirthday =  LocalDate.of(birthYear,birthMonth,birthDayOfMonth);
-            Period getPeriode = Period.between(completeBirthday,LocalDate.now());
+            Period getPeriod = Period.between(completeBirthday,LocalDate.now());
 
 
-            if(getPeriode.getYears() < 18) {
+            if(getPeriod.getYears() < 18) {
                 newMember = new Junior(name, memberID, gender, birthYear,birthMonth,birthDayOfMonth);
             }
-            if(getPeriode.getYears() > 18 && getPeriode.getYears() < 60){
+            if(getPeriod.getYears() >= 18 && getPeriod.getYears() < 60){
                 newMember = new Senior(name, memberID, gender, birthYear, birthMonth, birthDayOfMonth);
             }
-            if(getPeriode.getYears() > 60){
+            if(getPeriod.getYears() >= 60){
                 newMember = new Veteran(name, memberID, gender, birthYear, birthMonth, birthDayOfMonth);
             }
 
