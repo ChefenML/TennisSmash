@@ -7,7 +7,7 @@ public class Passive extends Member {
     }
 
     @Override public double membersFee() {
-        return 250;
+        return 250.0;
     }
 
 }
