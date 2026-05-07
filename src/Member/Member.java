@@ -45,7 +45,7 @@ public abstract class Member implements SmashFee {
         return birthMonth;
     }
 
-    public int getBirthDay() {
+    public int birthDayOfMonth() {
         return birthDayOfMonth;
     }
 
@@ -65,6 +65,6 @@ public abstract class Member implements SmashFee {
 
     //Metoden fra vores interface SmashFee
     @Override
-    public void membersFee() {
+    public double membersFee(){
     }
 }

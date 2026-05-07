@@ -10,7 +10,7 @@ public abstract class Active extends Member {
         this.exercise = exercise;
     }
     @Override public double membersFee() {
-        return  0.0;
+        return 0.0; // Bliver implementeret i junior/senior/veteran
     }
 
     public GameTypes getGameType() {
