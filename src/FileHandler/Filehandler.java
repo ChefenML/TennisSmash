@@ -1,9 +1,10 @@
 package FileHandler;
 
-import Member.Member;
+import Member.*;
 
 import java.io.*;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 
 public class Filehandler {
@@ -16,7 +17,7 @@ public class Filehandler {
 
     public void loadMembers(){
     String line;
-
+        Member newMember = null;
         try(BufferedReader reader = new BufferedReader(new FileReader(MEMEBER_FILE))){
             //try with resources, no need to close stuff
             //Læs CSV og del data ind i array-bidder opret ny member med data, bliv ved indtil tom line/null.
@@ -33,9 +34,18 @@ public class Filehandler {
             int birthMonth = Integer.parseInt(memberData[4]);
             int birthDayOfMonth = Integer.parseInt(memberData[5]);
             LocalDate completeBirthday =  LocalDate.of(birthYear,birthMonth,birthDayOfMonth);
+            Period getPeriode = Period.between(completeBirthday,LocalDate.now());
 
 
-            Member newMember = new Member(name,gender,memberID,completeBirthday);
+            if(getPeriode.getYears() < 18) {
+                newMember = new Junior(name, memberID, gender, birthYear,birthMonth,birthDayOfMonth);
+            }
+            if(getPeriode.getYears() > 18 && getPeriode.getYears() < 60){
+                newMember = new Senior(name, memberID, gender, birthYear, birthMonth, birthDayOfMonth);
+            }
+            if(getPeriode.getYears() > 60){
+                newMember = new Veteran(name, memberID, gender, birthYear, birthMonth, birthDayOfMonth);
+            }
 
             memberList.add(newMember);
             /* Member Data
@@ -51,11 +61,9 @@ public class Filehandler {
             }
         catch (FileNotFoundException e) {
                  throw new RuntimeException(e);
-                e.printStackTrace();
         }
         catch (IOException e) {
                  throw new RuntimeException(e);
-                e.printStackTrace();
         }
     }
 
@@ -70,14 +78,13 @@ public class Filehandler {
                            member.getGender() + "|" +
                            member.getBirthYear() + "|" +
                            member.getBirthMonth() + "|" +
-                           member.getBirthDayOfMonth();
+                           member.birthDayOfMonth();
 
            writer.println(memberData);
 
            //insert exception here
         } catch (IOException e) {
             throw new RuntimeException(e);
-            e.printStackTrace();
         }
     }
 }

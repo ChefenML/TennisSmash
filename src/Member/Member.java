@@ -45,7 +45,7 @@ public abstract class Member implements SmashFee {
         return birthMonth;
     }
 
-    public int getBirthDay() {
+    public int birthDayOfMonth() {
         return birthDayOfMonth;
     }
 
