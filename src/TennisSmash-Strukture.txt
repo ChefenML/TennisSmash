@@ -34,10 +34,10 @@ Tennis Smash
 │
 ├── Match/
 │   ├── Match.java                      Super
-│   ├── Training.java                   Træning
-│   ├── Single.java                     Single Kamp
-│   ├── Double.java                     Double Kamp
-│   └── Mix                             Mix Kamp
+│   ├── Training.java                   Training
+│   ├── Single.java                     Single Match
+│   ├── Double.java                     Double Match
+│   └── Mix                             Mix Match
 │
 ├── Validators/
 │   ├── Needed?.java                    Stuff might need validation
