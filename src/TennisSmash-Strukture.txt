@@ -8,7 +8,7 @@ Tennis Smash
 │   ├── Colors.java                 Colors of the world
 │   └── Anchiicode.java
 │
-├── Members/
+├── Member/
 │   ├── Members.java                SuperClass: memberFee()
 │   ├── Junior.java                 Kids <18
 │   ├── Senior.java                 Adults 18<x<60
