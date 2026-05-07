@@ -11,17 +11,17 @@ public abstract class Member implements SmashFee {
     private char gender;
     private int birthYear;
     private int birthMonth;
-    private int birthDay;
+    private int birthDayOfMonth;
 
 
     //Konstruktør
-    public Member(String name, int memberID, char gender, int birthYear, int birthMonth, int birthDay){
+    public Member(String name, int memberID, char gender, int birthYear, int birthMonth, int birthDayOfMonth){
         this.name = name;
         this.memberID = memberID;
         this.gender = gender;
         this.birthYear = birthYear;
         this.birthMonth = birthMonth;
-        this.birthDay = birthDay;
+        this.birthDayOfMonth = birthDayOfMonth;
     }
 
     //Getters
@@ -46,12 +46,12 @@ public abstract class Member implements SmashFee {
     }
 
     public int getBirthDay() {
-        return birthDay;
+        return birthDayOfMonth;
     }
 
     //Metode til at udregne alder ved at tage stamdataen indtastet ved indmeldelse og sammenligne dem med dagens dato ved hjælp af LocalDateTime & Period.between.
     public Period getAge(){
-        LocalDate birthDate = LocalDate.of(birthYear, birthMonth, birthDay);
+        LocalDate birthDate = LocalDate.of(birthYear, birthMonth, birthDayOfMonth);
         LocalDate today = LocalDate.now();
         return Period.between(birthDate, today);
     }
