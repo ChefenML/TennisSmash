@@ -8,7 +8,7 @@ import java.time.Period;
 import java.util.ArrayList;
 
 public class Filehandler {
-    private static final String MEMEBER_FILE = "src/Data/members.csv";
+    private static final String MEMBER_FILE = "src/Data/members.csv";
     private static final String PAYMENTS_FILE = "src/Data/payments.csv";
     private static final String TRAINING_FILE = "src/Data/training.csv";
     private static final String TOURNAMENT_FILE = "src/Data/TOURNAMENT.csv";
@@ -18,7 +18,7 @@ public class Filehandler {
     public void loadMembers(){
     String line;
         Member newMember = null;
-        try(BufferedReader reader = new BufferedReader(new FileReader(MEMEBER_FILE))){
+        try(BufferedReader reader = new BufferedReader(new FileReader(MEMBER_FILE))){
             //try with resources, no need to close stuff
             //Læs CSV og del data ind i array-bidder opret ny member med data, bliv ved indtil tom line/null.
             //Pt står data splitter i csv til | <-måske vi ender på anden separator?
@@ -71,7 +71,7 @@ public class Filehandler {
     public void saveMember(Member member) {
         //try with resources, no need to close stuff
 
-        try(PrintWriter writer = new PrintWriter(new FileWriter(MEMEBER_FILE,true))){
+        try(PrintWriter writer = new PrintWriter(new FileWriter(MEMBER_FILE,true))){
            //Laver String med memberData og separarer med | mellem data, men fødsesdato er med -;
             String memberData =
                    member.getName() + "|" +
