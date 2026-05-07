@@ -35,16 +35,17 @@ public class Filehandler {
             int birthDayOfMonth = Integer.parseInt(memberData[5]);
             LocalDate completeBirthday =  LocalDate.of(birthYear,birthMonth,birthDayOfMonth);
             Period getPeriod = Period.between(completeBirthday,LocalDate.now());
-
+            GameTypes gameType = GameTypes.valueOf(memberData[6]);
+            Exerciser exerciser = Exerciser.valueOf(memberData[7]);
 
             if(getPeriod.getYears() < 18) {
-                newMember = new Junior(name, memberID, gender, birthYear,birthMonth,birthDayOfMonth);
+                newMember = new Junior(name, memberID, gender, birthYear,birthMonth,birthDayOfMonth,gameType,exerciser);
             }
             if(getPeriod.getYears() >= 18 && getPeriod.getYears() < 60){
-                newMember = new Senior(name, memberID, gender, birthYear, birthMonth, birthDayOfMonth);
+                newMember = new Senior(name, memberID, gender, birthYear, birthMonth, birthDayOfMonth,gameType,exerciser);
             }
             if(getPeriod.getYears() >= 60){
-                newMember = new Veteran(name, memberID, gender, birthYear, birthMonth, birthDayOfMonth);
+                newMember = new Veteran(name, memberID, gender, birthYear, birthMonth, birthDayOfMonth,gameType,exerciser);
             }
 
             memberList.add(newMember);
