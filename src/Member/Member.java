@@ -66,5 +66,6 @@ public abstract class Member implements SmashFee {
     //Metoden fra vores interface SmashFee
     @Override
     public double membersFee(){
+        return 0;
     }
 }
