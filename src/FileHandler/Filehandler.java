@@ -51,13 +51,13 @@ public class Filehandler {
                     newMember = new Passive(name, memberID, gender, birthYear,birthMonth,birthDayOfMonth);
                 }
 
-            if(getPeriod.getYears() < 18) {
+            else if(getPeriod.getYears() < 18) {
                 newMember = new Junior(name, memberID, gender, birthYear,birthMonth,birthDayOfMonth,gameType,exerciser);
             }
-            if(getPeriod.getYears() >= 18 && getPeriod.getYears() < 60){
+            else if(getPeriod.getYears() >= 18 && getPeriod.getYears() < 60){
                 newMember = new Senior(name, memberID, gender, birthYear, birthMonth, birthDayOfMonth,gameType,exerciser);
             }
-            if(getPeriod.getYears() >= 60){
+            else if(getPeriod.getYears() >= 60){
                 newMember = new Veteran(name, memberID, gender, birthYear, birthMonth, birthDayOfMonth,gameType,exerciser);
             }
             //backup if nothing else?
@@ -102,6 +102,15 @@ public class Filehandler {
                            member.getBirthYear() + "|" +
                            member.getBirthMonth() + "|" +
                            member.birthDayOfMonth() + "|";
+
+            //Overvej switch case.
+            //Midlertidig template, gentag 3 gange: "Junior, senior, veteran".
+            if (member.getClass().getSimpleName().equalsIgnoreCase("junior")) {
+                Junior junior = (Junior) member;
+                memberData +=
+                        junior.getGameType() + "|" +
+                                junior.getExercise() + "|";
+            }
 
            writer.println(memberData + "\n");
 
