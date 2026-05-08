@@ -1,9 +1,13 @@
 package SwingTest;
 
+import FileHandler.*;
+import Member.*;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class Frame extends JFrame implements ActionListener {
     Panel panel;
@@ -12,6 +16,8 @@ public class Frame extends JFrame implements ActionListener {
     JComboBox combox;
     JTextField textField;
 
+    ArrayList<Member> allmembers = new ArrayList<>();
+    Filehandler filehandler = new Filehandler();
     public Frame(){
         //knap
         but1 = new JButton("CheckBox");
@@ -33,7 +39,7 @@ public class Frame extends JFrame implements ActionListener {
 
         //Dropdown menu
         String[] ageCat = {"Junior","Senior","Veteran"};
-        combox = new JComboBox(ageCat);
+        combox = new JComboBox(getNameArray());
         combox.addActionListener(this);
 
         panel = new Panel();
@@ -83,4 +89,20 @@ public class Frame extends JFrame implements ActionListener {
             System.out.println(combox.getSelectedIndex());
         }
     }
+ public String[] getNameArray() {
+     allmembers = filehandler.loadMembers();
+     int countFrom = 0;
+
+     String[] array = new String[allmembers.size()];
+     for(Member m : allmembers){
+
+        String b = m.getName();
+        array[countFrom] = b;
+
+         countFrom++;
+     }
+
+     return array;
+ }
+
 }
