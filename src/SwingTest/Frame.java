@@ -13,20 +13,39 @@ public class Frame extends JFrame implements ActionListener {
     Panel panel;
     JCheckBox check1,check2,check3;
     JButton but1;
-    JComboBox combox;
-    JTextField textField;
-
+    JComboBox memberName,GameTypes,Exerciser;
+    JTextField fullName,gender,birthDayOfMonth,birthMonth,birthYear;
+    JLabel fullNameLabel,genderLabel,birthDayOfMonthLabel,birthMonthLabel,birthYearLabel;
     ArrayList<Member> allmembers = new ArrayList<>();
     Filehandler filehandler = new Filehandler();
     public Frame(){
+        this.setSize(500,500); //flowmanager overwriter
+        this.setLayout(new FlowLayout());
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setTitle("Tennis Smash");
+
+        this.setResizable(true);
+
         //knap
         but1 = new JButton("CheckBox");
         but1.addActionListener(this);
 
+        //Labels for text boxes
+        fullNameLabel = new JLabel("Fornavn Efternavn");
+        fullNameLabel.setVerticalTextPosition(SwingConstants.TOP);
+        fullNameLabel.setVerticalAlignment(SwingConstants.TOP);
+        genderLabel = new JLabel("Køn M/K");
+        birthDayOfMonthLabel = new JLabel("Fødseldag dd");
+        birthMonthLabel = new JLabel("Fødselmåned mm");
+        birthYearLabel  = new JLabel("Fødselår åååå");
 
         //input felt hedder JTextField
-        textField = new JTextField();
-        textField.setPreferredSize(new Dimension(200,40));
+        fullName = new JTextField("Navn Efternavn",10);
+        gender = new JTextField("M",1);
+        birthYear = new JTextField("åååå",4);
+        birthMonth = new JTextField("mm",2);
+        birthDayOfMonth = new JTextField("dd",2);
+        //textField.setPreferredSize(new Dimension(200,20));
 
         //Checkboxes
         check1 = new JCheckBox();
@@ -39,8 +58,8 @@ public class Frame extends JFrame implements ActionListener {
 
         //Dropdown menu
         String[] ageCat = {"Junior","Senior","Veteran"};
-        combox = new JComboBox(getNameArray());
-        combox.addActionListener(this);
+        memberName = new JComboBox(getNameArray());
+        memberName.addActionListener(this);
 
         panel = new Panel();
         //Set text of comboxes
@@ -48,10 +67,7 @@ public class Frame extends JFrame implements ActionListener {
         check2.setText("Double");
         check3.setText("Mixed");
 
-        this.setLayout(new FlowLayout());
-         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-          this.setTitle("Tennis Smash");
-            this.setResizable(true);
+
 
 
             //adding all to frame
@@ -59,9 +75,18 @@ public class Frame extends JFrame implements ActionListener {
             this.add(check1); //Boxes
             this.add(check2);
             this.add(check3);
-            this.add(textField);
+            this.add(fullNameLabel);
+            this.add(fullName);
+            this.add(genderLabel);
+            this.add(gender);
+            this.add(birthDayOfMonthLabel);
+            this.add(birthDayOfMonth);
+            this.add(birthMonthLabel);
+            this.add(birthMonth);
+            this.add(birthYearLabel);
+            this.add(birthYear);
 
-            this.add(combox); //ComboBox (Drop downmenu)
+            this.add(memberName); //ComboBox (Drop downmenu)
         //this.add(panel);
         this.pack();
         this.setLocationRelativeTo(null);
@@ -74,7 +99,7 @@ public class Frame extends JFrame implements ActionListener {
             System.out.println("cheacky cheeky #1");
         }
         if(e.getSource()==but1){
-
+            System.out.println(fullName.getText());
             System.out.println("Single checked: " + check1.isSelected());
         }
         if(e.getSource()==but1){
@@ -84,9 +109,16 @@ public class Frame extends JFrame implements ActionListener {
             System.out.println("Mixed checked: " + check3.isSelected());
         }
 
-        if(e.getSource()==combox){
-            System.out.println(combox.getSelectedItem());
-            System.out.println(combox.getSelectedIndex());
+        if(e.getSource()== memberName){
+            int memberindex = memberName.getSelectedIndex();
+            Member replacemem = allmembers.get(memberindex);
+            fullName.setText(replacemem.getName());
+            gender.setText(String.valueOf(replacemem.getGender()));
+            birthYear.setText(String.valueOf(replacemem.getBirthYear()));
+            birthMonth.setText(String.valueOf(replacemem.getBirthMonth()));
+            birthDayOfMonth.setText(String.valueOf(replacemem.birthDayOfMonth()));
+            System.out.println(memberName.getSelectedItem() + "@index: " + memberName.getSelectedIndex());
+
         }
     }
  public String[] getNameArray() {
