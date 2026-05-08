@@ -18,6 +18,9 @@ public class Filehandler {
     public void loadMembers(){
     String line;
         Member newMember = null;
+        GameTypes gameType = null;
+        Exerciser exerciser = null;
+
         try(BufferedReader reader = new BufferedReader(new FileReader(MEMBER_FILE))){
             //try with resources, no need to close stuff
             //Læs CSV og del data ind i array-bidder opret ny member med data, bliv ved indtil tom line/null.
@@ -39,8 +42,8 @@ public class Filehandler {
             Period getPeriod = Period.between(completeBirthday,LocalDate.now());
             //Hvad sker der hvis String array er kortere end 7?
             if(memberData.length > 6) {
-                GameTypes gameType = GameTypes.valueOf(memberData[6]);
-                Exerciser exerciser = Exerciser.valueOf(memberData[7]);
+                gameType = GameTypes.valueOf(memberData[6]);
+                exerciser = Exerciser.valueOf(memberData[7]);
             }
             //Bedre passive identifier?
             if(memberData.length == 6)
