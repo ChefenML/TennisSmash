@@ -10,6 +10,7 @@ public class Frame extends JFrame implements ActionListener {
     JCheckBox check1,check2,check3;
     JButton but1;
     JComboBox combox;
+    JTextField textField;
 
     public Frame(){
         //knap
@@ -17,6 +18,9 @@ public class Frame extends JFrame implements ActionListener {
         but1.addActionListener(this);
 
 
+        //input felt hedder JTextField
+        textField = new JTextField();
+        textField.setPreferredSize(new Dimension(200,40));
 
         //Checkboxes
         check1 = new JCheckBox();
@@ -49,7 +53,7 @@ public class Frame extends JFrame implements ActionListener {
             this.add(check1); //Boxes
             this.add(check2);
             this.add(check3);
-
+            this.add(textField);
 
             this.add(combox); //ComboBox (Drop downmenu)
         //this.add(panel);

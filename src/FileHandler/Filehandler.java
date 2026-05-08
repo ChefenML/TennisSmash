@@ -37,9 +37,16 @@ public class Filehandler {
             //opret tjek på parsed data om alder
             LocalDate completeBirthday =  LocalDate.of(birthYear,birthMonth,birthDayOfMonth);
             Period getPeriod = Period.between(completeBirthday,LocalDate.now());
-
-            GameTypes gameType = GameTypes.valueOf(memberData[6]);
-            Exerciser exerciser = Exerciser.valueOf(memberData[7]);
+            //Hvad sker der hvis String array er kortere end 7?
+            if(memberData.length > 6) {
+                GameTypes gameType = GameTypes.valueOf(memberData[6]);
+                Exerciser exerciser = Exerciser.valueOf(memberData[7]);
+            }
+            //Bedre passive identifier?
+            if(memberData.length == 6)
+                {
+                    newMember = new Passive(name, memberID, gender, birthYear,birthMonth,birthDayOfMonth);
+                }
 
             if(getPeriod.getYears() < 18) {
                 newMember = new Junior(name, memberID, gender, birthYear,birthMonth,birthDayOfMonth,gameType,exerciser);
@@ -50,11 +57,12 @@ public class Filehandler {
             if(getPeriod.getYears() >= 60){
                 newMember = new Veteran(name, memberID, gender, birthYear, birthMonth, birthDayOfMonth,gameType,exerciser);
             }
-
-            //Bedre bare at sige "resten" ?
-            if(memberData.length == 6){
-                newMember = new Passive(name, memberID, gender, birthYear,birthMonth,birthDayOfMonth);
+            //backup if nothing else?
+            else
+            {
+                newMember = new Senior(name, memberID, gender, birthYear, birthMonth, birthDayOfMonth,gameType,exerciser);
             }
+
 
 
             memberList.add(newMember);
