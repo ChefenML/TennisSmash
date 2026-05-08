@@ -59,8 +59,10 @@ public abstract class Member implements SmashFee {
 
     //toString metode til at printe vores medlem i stedet for at få vise allokeret memory,
     //her bliver der implementere vores getAge metode, vi kalder på age.getYears der returnere alderen i hele tal
+
+    //ø i køn laver noget hyperlink lign. (Kig det igennem)
     public String toString(){
-        return "Navn: " + name + " - MedlemsID: " + memberID + " - Køn: " + gender + " - Alder: " + getAge();
+        return "Navn: " + name + " - MedlemsID: " + memberID + " - Kon: " + gender + " - Alder: " + getAge();
     }
 
     //Metoden fra vores interface SmashFee

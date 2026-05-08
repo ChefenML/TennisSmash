@@ -15,7 +15,7 @@ public class Filehandler {
 
     ArrayList<Member> memberList = new ArrayList<>();
 
-    public void loadMembers(){
+    public ArrayList<Member> loadMembers(){
     String line;
         Member newMember = null;
         GameTypes gameType = null;
@@ -51,13 +51,13 @@ public class Filehandler {
                     newMember = new Passive(name, memberID, gender, birthYear,birthMonth,birthDayOfMonth);
                 }
 
-            if(getPeriod.getYears() < 18) {
+            else if(getPeriod.getYears() < 18) {
                 newMember = new Junior(name, memberID, gender, birthYear,birthMonth,birthDayOfMonth,gameType,exerciser);
             }
-            if(getPeriod.getYears() >= 18 && getPeriod.getYears() < 60){
+            else if(getPeriod.getYears() >= 18 && getPeriod.getYears() < 60){
                 newMember = new Senior(name, memberID, gender, birthYear, birthMonth, birthDayOfMonth,gameType,exerciser);
             }
-            if(getPeriod.getYears() >= 60){
+            else if(getPeriod.getYears() >= 60){
                 newMember = new Veteran(name, memberID, gender, birthYear, birthMonth, birthDayOfMonth,gameType,exerciser);
             }
             //backup if nothing else?
@@ -86,6 +86,7 @@ public class Filehandler {
         catch (IOException e) {
                  throw new RuntimeException(e);
         }
+        return memberList;
     }
 
     public void saveMember(Member member) {
@@ -93,15 +94,25 @@ public class Filehandler {
 
         try(PrintWriter writer = new PrintWriter(new FileWriter(MEMBER_FILE,true))){
            //Laver String med memberData og separarer med | mellem data, men fødsesdato er med -;
+
             String memberData =
                    member.getName() + "|" +
                            member.getMemberID() + "|" +
                            member.getGender() + "|" +
                            member.getBirthYear() + "|" +
                            member.getBirthMonth() + "|" +
-                           member.birthDayOfMonth();
+                           member.birthDayOfMonth() + "|";
 
-           writer.println(memberData);
+            //Overvej switch case.
+            //Midlertidig template, gentag 3 gange: "Junior, senior, veteran".
+            if (member.getClass().getSimpleName().equalsIgnoreCase("junior")) {
+                Junior junior = (Junior) member;
+                memberData +=
+                        junior.getGameType() + "|" +
+                                junior.getExercise() + "|";
+            }
+
+           writer.println(memberData + "\n");
 
            //insert exception here
         } catch (IOException e) {

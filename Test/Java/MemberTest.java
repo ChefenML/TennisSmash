@@ -9,6 +9,7 @@ class MemberTest {
 
     @Test
     void getNameShouldReturnName() {
+        Member member = new Junior("John", 001, 'm', 1995, 5,1,GameTypes.SINGLE, Exerciser.EXERCISE);
         Member member = new Junior("John", 1, 'm', 1995, 5,1,SINGLE,EXERCISE);
             Assertions.assertEquals("John", member.getName());
     }
