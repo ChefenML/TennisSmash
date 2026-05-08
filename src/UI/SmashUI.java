@@ -1,19 +1,25 @@
 package UI;
+import Member.*;
 import Member.MemberFactory;
+import FileHandler.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.FileHandler;
 
+import static Member.Exerciser.EXERCISE;
+import static Member.GameTypes.SINGLE;
+
 public class SmashUI {
     private MemberFactory factory;
-    private FileHandler fileHandler;
+    private Filehandler fileHandler;
     private Scanner scanner;
 
     // Creates a constructor to make sure the class has the necessary tools
     public SmashUI() throws IOException {
         this.factory = new MemberFactory();
-        this.fileHandler = new FileHandler();
+        this.fileHandler = new Filehandler();
         this.scanner = new Scanner(System.in);
     }
 
@@ -51,12 +57,17 @@ public class SmashUI {
 
     // This will be a method for adding a member object to a list
     private void addNewMember(){
-
+        Member testMember = new Senior("John", 3, 'm', 1990, 5, 1, SINGLE, EXERCISE);
+        System.out.println(testMember.getClass().getSimpleName());
     }
 
     // This will be a method for showing all members
     private void showAllMembers(){
+        ArrayList<Member> test = fileHandler.loadMembers();
+        for (Member m : test) {
 
+            System.out.println(m);
+        }
     }
 
     // This will save and close the program

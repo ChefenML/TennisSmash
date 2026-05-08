@@ -15,7 +15,7 @@ public class Filehandler {
 
     ArrayList<Member> memberList = new ArrayList<>();
 
-    public void loadMembers(){
+    public ArrayList<Member> loadMembers(){
     String line;
         Member newMember = null;
         GameTypes gameType = null;
@@ -86,6 +86,7 @@ public class Filehandler {
         catch (IOException e) {
                  throw new RuntimeException(e);
         }
+        return memberList;
     }
 
     public void saveMember(Member member) {
@@ -93,15 +94,16 @@ public class Filehandler {
 
         try(PrintWriter writer = new PrintWriter(new FileWriter(MEMBER_FILE,true))){
            //Laver String med memberData og separarer med | mellem data, men fødsesdato er med -;
+
             String memberData =
                    member.getName() + "|" +
                            member.getMemberID() + "|" +
                            member.getGender() + "|" +
                            member.getBirthYear() + "|" +
                            member.getBirthMonth() + "|" +
-                           member.birthDayOfMonth();
+                           member.birthDayOfMonth() + "|";
 
-           writer.println(memberData);
+           writer.println(memberData + "\n");
 
            //insert exception here
         } catch (IOException e) {
