@@ -49,22 +49,23 @@ public abstract class Member implements SmashFee {
         return birthDayOfMonth;
     }
 
-    //Metode til at udregne alder ved at tage stamdataen indtastet ved indmeldelse og sammenligne dem med dagens dato ved hjælp af LocalDateTime & Period.between.
-    public Period getAge(){
+    //Metode til at udregne alder ved at tage stamdataene: birthYear, birthMonth & birthDayOfMonth, indtastet ved indmeldelse,
+    // og sammenligne dem med dagens dato ved hjælp af LocalDateTime & Period.between.
+    public int getAge(){
         LocalDate birthDate = LocalDate.of(birthYear, birthMonth, birthDayOfMonth);
         LocalDate today = LocalDate.now();
-        return Period.between(birthDate, today);
+        return Period.between(birthDate, today).getYears();
     }
 
     //toString metode til at printe vores medlem i stedet for at få vise allokeret memory,
     //her bliver der implementere vores getAge metode, vi kalder på age.getYears der returnere alderen i hele tal
     public String toString(){
-        Period age = getAge();
-        return "Navn: " + name + " - MedlemsID: " + memberID + " - Køn: " + gender + " - Alder: " + age.getYears();
+        return "Navn: " + name + " - MedlemsID: " + memberID + " - Køn: " + gender + " - Alder: " + getAge();
     }
 
     //Metoden fra vores interface SmashFee
     @Override
     public double membersFee(){
+        return 0.0;
     }
 }
