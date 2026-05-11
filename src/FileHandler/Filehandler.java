@@ -20,6 +20,7 @@ public class Filehandler {
         Member newMember = null;
         GameTypes gameType = null;
         Exerciser exerciser = null;
+        MemberType memberType = null;
 
         try(BufferedReader reader = new BufferedReader(new FileReader(MEMBER_FILE))){
             //try with resources, no need to close stuff
@@ -41,30 +42,31 @@ public class Filehandler {
             LocalDate completeBirthday =  LocalDate.of(birthYear,birthMonth,birthDayOfMonth);
             Period getPeriod = Period.between(completeBirthday,LocalDate.now());
             //Hvad sker der hvis String array er kortere end 7?
-            if(memberData.length > 6) {
-                gameType = GameTypes.valueOf(memberData[6]);
-                exerciser = Exerciser.valueOf(memberData[7]);
-            }
-            //Bedre passive identifier?
-            if(memberData.length == 6)
-                {
-                    newMember = new Passive(name, memberID, gender, birthYear,birthMonth,birthDayOfMonth);
-                }
+                memberType = MemberType.valueOf(memberData[6]);
+                gameType = GameTypes.valueOf(memberData[7]);
+                exerciser = Exerciser.valueOf(memberData[8]);
 
-            else if(getPeriod.getYears() < 18) {
-                newMember = new Junior(name, memberID, gender, birthYear,birthMonth,birthDayOfMonth,gameType,exerciser);
-            }
-            else if(getPeriod.getYears() >= 18 && getPeriod.getYears() < 60){
-                newMember = new Senior(name, memberID, gender, birthYear, birthMonth, birthDayOfMonth,gameType,exerciser);
-            }
-            else if(getPeriod.getYears() >= 60){
-                newMember = new Veteran(name, memberID, gender, birthYear, birthMonth, birthDayOfMonth,gameType,exerciser);
-            }
-            //backup if nothing else?
-            else
-            {
-                newMember = new Senior(name, memberID, gender, birthYear, birthMonth, birthDayOfMonth,gameType,exerciser);
-            }
+            //String name, int memberID, char gender, int birthYear, int birthMonth, int birthDayOfMonth, MemberType memberType, GameTypes gameTypes, Exerciser exerciser){
+            //Bedre passive identifier?
+//            if(memberData.length == 6)
+//                {
+//                    newMember = new Passive(name, memberID, gender, birthYear,birthMonth,birthDayOfMonth);
+//                }
+//
+//            else if(getPeriod.getYears() < 18) {
+//                newMember = new Junior(name, memberID, gender, birthYear,birthMonth,birthDayOfMonth,gameType,exerciser);
+//            }
+//            else if(getPeriod.getYears() >= 18 && getPeriod.getYears() < 60){
+//                newMember = new Senior(name, memberID, gender, birthYear, birthMonth, birthDayOfMonth,gameType,exerciser);
+//            }
+//            else if(getPeriod.getYears() >= 60){
+//                newMember = new Veteran(name, memberID, gender, birthYear, birthMonth, birthDayOfMonth,gameType,exerciser);
+//            }
+//            //backup if nothing else?
+//            else
+
+                newMember = new Member(name, memberID, gender, birthYear, birthMonth, birthDayOfMonth, memberType, gameType, exerciser);
+
 
 
 
@@ -105,12 +107,12 @@ public class Filehandler {
 
             //Overvej switch case.
             //Midlertidig template, gentag 3 gange: "Junior, senior, veteran".
-            if (member.getClass().getSimpleName().equalsIgnoreCase("junior")) {
-                Junior junior = (Junior) member;
-                memberData +=
-                        junior.getGameType() + "|" +
-                                junior.getExercise() + "|";
-            }
+//            if (member.getClass().getSimpleName().equalsIgnoreCase("junior")) {
+//                Junior junior = (Junior) member;
+//                memberData +=
+//                        junior.getGameType() + "|" +
+//                                junior.getExercise() + "|";
+//            }
 
            writer.println(memberData + "\n");
 

@@ -3,25 +3,31 @@ package Member;
 import java.time.LocalDate;
 import java.time.Period;
 
-public abstract class Member implements SmashFee {
+public class Member implements SmashFee {
 
     //Private variable så vi kun kan tilgå dem i denne klasse. (Incapsulation)
     private String name;
+    private MemberType memberType;
     private int memberID;
     private char gender;
     private int birthYear;
     private int birthMonth;
     private int birthDayOfMonth;
-
+    private GameTypes gameTypes;
+    private Exerciser exerciser;
 
     //Konstruktør
-    public Member(String name, int memberID, char gender, int birthYear, int birthMonth, int birthDayOfMonth){
+    public Member(String name, int memberID, char gender, int birthYear, int birthMonth, int birthDayOfMonth, MemberType memberType, GameTypes gameTypes, Exerciser exerciser){
         this.name = name;
         this.memberID = memberID;
         this.gender = gender;
         this.birthYear = birthYear;
         this.birthMonth = birthMonth;
         this.birthDayOfMonth = birthDayOfMonth;
+        this.memberType = memberType;
+        this.gameTypes = gameTypes;
+        this.exerciser = exerciser;
+
     }
 
     //Getters
@@ -47,6 +53,10 @@ public abstract class Member implements SmashFee {
 
     public int birthDayOfMonth() {
         return birthDayOfMonth;
+    }
+
+    public String getMemberType(){
+        return memberType.name();
     }
 
     //Metode til at udregne alder ved at tage stamdataene: birthYear, birthMonth & birthDayOfMonth, indtastet ved indmeldelse,

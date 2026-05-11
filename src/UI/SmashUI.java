@@ -57,9 +57,10 @@ public class SmashUI {
 
     // This will be a method for adding a member object to a list
     private void addNewMember(){
-        Member testMember = new Senior("John", 3, 'm', 1990, 5, 1, SINGLE, EXERCISE);
-        Member test2Member = new Passive("John", 3, 'm', 1990, 5, 1);
-        System.out.println(testMember.getClass().getSimpleName());
+        Member testMember = new Member("John", 3, 'm', 1990, 5, 1, MemberType.SENIOR, GameTypes.SINGLE, Exerciser.EXERCISE);
+        Member test2Member = new Member("John", 3, 'm', 1990, 5, 1, MemberType.SENIOR, GameTypes.DOUBLE, Exerciser.EXERCISE);
+        //String name, int memberID, char gender, int birthYear, int birthMonth, int birthDayOfMonth, MemberType memberType, GameTypes gameTypes, Exerciser exerciser){
+System.out.println(testMember.getClass().getSimpleName());
     }
 
     // This will be a method for showing all members

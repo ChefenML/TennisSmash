@@ -2,5 +2,6 @@ package Member;
 
 public enum Exerciser {
     EXERCISE,
-    COMPETITIVE
+    COMPETITIVE,
+    PASSIVE
 }
