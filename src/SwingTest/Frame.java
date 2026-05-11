@@ -19,12 +19,12 @@ public class Frame extends JFrame implements ActionListener {
     ArrayList<Member> allmembers = new ArrayList<>();
     Filehandler filehandler = new Filehandler();
     public Frame(){
-        this.setSize(500,500); //flowmanager overwriter
+        this.setSize(500,500); //Flowmanager overwriter?
         this.setLayout(new FlowLayout());
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setTitle("Tennis Smash");
-
-        this.setResizable(true);
+        this.setLocationRelativeTo(null);
+        //this.setResizable(true);
 
         //knap
         but1 = new JButton("CheckBox");
@@ -87,7 +87,7 @@ public class Frame extends JFrame implements ActionListener {
             this.add(birthYear);
 
             this.add(memberName); //ComboBox (Drop downmenu)
-        //this.add(panel);
+        this.add(panel);
         this.pack();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
