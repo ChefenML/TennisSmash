@@ -64,6 +64,9 @@ public class Panel extends JPanel {
            // member2dArray =[i][m.getName(),m.getMemberID(),m.getGender(), m.getBirthYear(),m.getBirthMonth(),m.birthDayOfMonth(), m.getMemberType(),m.getGameTypes(),m.getExerciser()];
             i++;
             //John|1|M|1995|3|20|SENIOR|PASSIVE|PASSIVE
+//           String b = m.getName();
+//           array[countFrom] = b;
+
         }
     }
     public void fillMembers(){

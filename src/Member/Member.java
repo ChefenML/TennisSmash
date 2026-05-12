@@ -87,6 +87,11 @@ public class Member implements SmashFee {
     //Metoden fra vores interface SmashFee
     @Override
     public double membersFee(){
-        return 0.0;
+        if(getMemberType().equalsIgnoreCase("PASSIVE")) return 250;
+        else if(getMemberType().equalsIgnoreCase("JUNIOR")) return 800;
+        else if(getMemberType().equalsIgnoreCase("SENIOR")) return 1500;
+        else
+        return 1125;
+
     }
 }
