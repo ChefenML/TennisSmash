@@ -59,6 +59,15 @@ public class Member implements SmashFee {
         return memberType.name();
     }
 
+    public String getGameTypes(){
+        return gameTypes.name();
+    }
+
+    public String getExerciser(){
+        return exerciser.name();
+    }
+
+
     //Metode til at udregne alder ved at tage stamdataene: birthYear, birthMonth & birthDayOfMonth, indtastet ved indmeldelse,
     // og sammenligne dem med dagens dato ved hjælp af LocalDateTime & Period.between.
     public int getAge(){
