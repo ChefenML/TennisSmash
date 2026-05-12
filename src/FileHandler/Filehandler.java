@@ -6,6 +6,7 @@ import java.io.*;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
+import java.util.EnumSet;
 
 public class Filehandler {
     private static final String MEMBER_FILE = "src/Data/members.csv";
@@ -18,7 +19,7 @@ public class Filehandler {
     public ArrayList<Member> loadMembers(){
     String line;
         Member newMember = null;
-        GameTypes gameType = null;
+        //GameTypes gameType = null;
         Exerciser exerciser = null;
         MemberType memberType = null;
 
@@ -43,7 +44,12 @@ public class Filehandler {
             Period getPeriod = Period.between(completeBirthday,LocalDate.now());
             //Hvad sker der hvis String array er kortere end 7?
                 memberType = MemberType.valueOf(memberData[6]);
-                gameType = GameTypes.valueOf(memberData[7]);
+                String[] gameTypeStrings = memberData[7].split(",");
+                EnumSet<GameTypes> gameTypes = EnumSet.noneOf(Member.GameTypes.class);
+                for (String gt : gameTypeStrings) {
+                    gameTypes.add(GameTypes.valueOf(gt));
+                }
+                //gameType = GameTypes.valueOf(memberData[7]);
                 exerciser = Exerciser.valueOf(memberData[8]);
 
             //String name, int memberID, char gender, int birthYear, int birthMonth, int birthDayOfMonth, MemberType memberType, GameTypes gameTypes, Exerciser exerciser){
@@ -65,7 +71,7 @@ public class Filehandler {
 //            //backup if nothing else?
 //            else
 
-                newMember = new Member(name, memberID, gender, birthYear, birthMonth, birthDayOfMonth, memberType, gameType, exerciser);
+                newMember = new Member(name, memberID, gender, birthYear, birthMonth, birthDayOfMonth, memberType, gameTypes, exerciser);
 
 
 
