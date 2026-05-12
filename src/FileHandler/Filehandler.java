@@ -7,15 +7,18 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
 
-public class Filehandler {
+import static java.lang.Boolean.parseBoolean;
+
+public class Filehandler implements FileHandling<Member>{
     private static final String MEMBER_FILE = "src/Data/members.csv";
     private static final String PAYMENTS_FILE = "src/Data/payments.csv";
     private static final String TRAINING_FILE = "src/Data/training.csv";
-    private static final String TOURNAMENT_FILE = "src/Data/TOURNAMENT.csv";
+    private static final String TOURNAMENT_FILE = "src/Data/tournament.csv";
 
     ArrayList<Member> memberList = new ArrayList<>();
+    //ArrayList<Payment> paymentList = new ArrayList<>();
 
-    public ArrayList<Member> loadMembers(){
+    public ArrayList<Member> load(){
     String line;
         Member newMember = null;
         GameTypes gameType = null;
@@ -91,10 +94,10 @@ public class Filehandler {
         return memberList;
     }
 
-    public void saveMember(Member member) {
+    public void save(Member member) {
         //try with resources, no need to close stuff
 
-        try(PrintWriter writer = new PrintWriter(new FileWriter(MEMBER_FILE,true))){
+        try(PrintWriter writer = new PrintWriter(new FileWriter(PAYMENTS_FILE,true))){
            //Laver String med memberData og separarer med | mellem data, men fødsesdato er med -;
 
             String memberData =
@@ -121,4 +124,70 @@ public class Filehandler {
             throw new RuntimeException(e);
         }
     }
+
+//    public ArrayList<Payment> loadPayments() {
+//        memberList = load();
+//        Payment newPayment = null;
+//        String line;
+//
+//        try (BufferedReader reader = new BufferedReader(new FileReader(PAYMENTS_FILE))) {
+//            //try with resources, no need to close stuff
+//            //Læs CSV og del data ind i array-bidder opret ny member med data, bliv ved indtil tom line/null.
+//            //Pt står data splitter i csv til | <-måske vi ender på anden separator?
+//            while ((line = reader.readLine()) != null) {
+//                String[] paymentData = line.split("\\|");
+//
+//
+//                String name = paymentData[0];
+//                int memberID = Integer.parseInt(paymentData[1]);
+//                boolean hasPaid = parseBoolean(paymentData[2]);
+//                int subscriptionPrice = Integer.parseInt(paymentData[3]);
+//
+//                newPayment = new Payment(name, memberID, hasPaid, subscriptionPrice);
+////                        p.getMemberID()    + "|" +
+////                        p.getName() + "|" +
+////                        p.hasPaid() + "|" +
+////                        p.getSubscription() + "|" +
+//
+//                }
+//            paymentList.add(newPayment);
+//
+//
+//
+//        } catch (FileNotFoundException e) {
+//            throw new RuntimeException(e);
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//        return paymentList;
+//    }
+//
+//        public void savePayments(Payment p){
+//        try(PrintWriter writer = new PrintWriter(new FileWriter(PAYMENTS_FILE,true))){
+//            //Laver String med memberData og separarer med | mellem data, men fødsesdato er med -;
+//
+//            String paymentData =
+//                    p.getName() + "|" +
+//                            p.getMemberID() + "|" +
+//                            p.hasPaid() + "|" +
+//                            p.getSubscription() + "|" +
+//
+//
+//            //Overvej switch case.
+//            //Midlertidig template, gentag 3 gange: "Junior, senior, veteran".
+////            if (member.getClass().getSimpleName().equalsIgnoreCase("junior")) {
+////                Junior junior = (Junior) member;
+////                memberData +=
+////                        junior.getGameType() + "|" +
+////                                junior.getExercise() + "|";
+////            }
+//
+//            writer.println(paymentData + "\n");
+//
+//            //insert exception here
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//
+//    }
 }

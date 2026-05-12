@@ -6,10 +6,6 @@ import FileHandler.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.logging.FileHandler;
-
-import static Member.Exerciser.EXERCISE;
-import static Member.GameTypes.SINGLE;
 
 public class SmashUI {
     private MemberFactory factory;
@@ -65,7 +61,7 @@ System.out.println(testMember.getClass().getSimpleName());
 
     // This will be a method for showing all members
     private void showAllMembers(){
-        ArrayList<Member> test = fileHandler.loadMembers();
+        ArrayList<Member> test = fileHandler.load();
         for (Member m : test) {
 
             System.out.println(m);

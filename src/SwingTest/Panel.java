@@ -4,7 +4,6 @@ import FileHandler.Filehandler;
 import Member.Member;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -67,6 +66,6 @@ public class Panel extends JPanel {
         }
     }
     public void fillMembers(){
-        memberList = fileHandler.loadMembers();
+        memberList = fileHandler.load();
     }
 }

@@ -122,7 +122,7 @@ public class Frame extends JFrame implements ActionListener {
         }
     }
  public String[] getNameArray() {
-     allmembers = filehandler.loadMembers();
+     allmembers = filehandler.load();
      int countFrom = 0;
 
      String[] array = new String[allmembers.size()];

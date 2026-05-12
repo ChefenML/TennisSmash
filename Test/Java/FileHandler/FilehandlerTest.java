@@ -7,6 +7,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class FilehandlerTest {
 
     @Test
-    void loadMembers() {
+    void load() {
     }
 }
