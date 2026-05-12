@@ -45,7 +45,7 @@ public class Filehandler {
             //Hvad sker der hvis String array er kortere end 7?
                 memberType = MemberType.valueOf(memberData[6]);
                 String[] gameTypeStrings = memberData[7].split(",");
-                EnumSet<GameTypes> gameTypes = EnumSet.noneOf(Member.GameTypes.class);
+                EnumSet<GameTypes> gameTypes = EnumSet.noneOf(GameTypes.class);
                 for (String gt : gameTypeStrings) {
                     gameTypes.add(GameTypes.valueOf(gt));
                 }
