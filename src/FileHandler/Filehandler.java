@@ -44,8 +44,12 @@ public class Filehandler {
             Period getPeriod = Period.between(completeBirthday,LocalDate.now());
             //Hvad sker der hvis String array er kortere end 7?
                 memberType = MemberType.valueOf(memberData[6]);
+
+                //Hener kolonne 7 og spitter på komma, da et medlem kan have flere GameTypes
                 String[] gameTypeStrings = memberData[7].split(",");
+                //Opretter et tomt EnumSet til at holde medlemmets GameTypes
                 EnumSet<GameTypes> gameTypes = EnumSet.noneOf(GameTypes.class);
+                //Går gennem hvert GameType navn og konverter det til en enum-værdi (fx GameTypes.SINGLE) og  tilføjer til EnumSet
                 for (String gt : gameTypeStrings) {
                     gameTypes.add(GameTypes.valueOf(gt));
                 }
