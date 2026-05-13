@@ -145,7 +145,7 @@ System.out.println(testMember.getClass().getSimpleName());
 
     // This will be a method for showing all members
     private void showAllMembers(){
-        ArrayList<Member> test = fileHandler.loadMembers();
+        ArrayList<Member> test = fileHandler.load();
         for (Member m : test) {
 
             System.out.println(m);
