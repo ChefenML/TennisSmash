@@ -30,9 +30,38 @@ public class SmashUI {
         System.out.println("Welcome to the Smash Management System!"
                 + "\n--------------------------------");
 
-    // Here a selection of choices will be run and looped
         while (running) {
-            showMainMenu();
+            showRoleMenu();
+            int choice = getIntegerInput();
+
+            switch (choice){
+                case 1 -> isChairman();
+                case 2 -> isCashier();
+                case 3 -> isTrainer();
+                case 0 -> running = false;
+                default ->  System.out.println("Invalid choice try again!");
+            }
+
+        }
+
+    // Here a selection of choices will be run and loope
+    }
+
+    private void showRoleMenu(){
+        System.out.println("\nLOG IN SOM: ");
+        System.out.println("1. Klubformand");
+        System.out.println("2. Kasser");
+        System.out.println("3. Træner");
+        System.out.println("0. Exit");
+        System.out.print("Select an option: ");
+    }
+
+
+    private void isChairman(){
+        boolean running = true;
+
+        while (running) {
+            showChairmanMenu();
             int choice = getIntegerInput();
 
             switch (choice){
@@ -45,12 +74,61 @@ public class SmashUI {
         }
     }
 
+    private void isTrainer(){
+        boolean running = true;
+
+        while (running) {
+            showTrainerMenu();
+            int choice = getIntegerInput();
+
+            switch (choice){
+                case 1 -> registerBestResult();
+                case 2 -> registerTournamentResult();
+                case 3 -> getTopFive();
+                case 4 -> saveAndExit();
+                case 0 -> running = false;
+                default -> System.out.println("Invalid choice try again!");
+            }
+        }
+    }
+
+    private void isCashier(){
+        boolean running = true;
+
+        while (running) {
+            showCashierMenu();
+            int choice = getIntegerInput();
+
+            switch (choice){
+                case 1 -> getPaymentList();
+                case 0 -> running = false;
+                default -> System.out.println("Invalid choice try again!");
+            }
+        }
+    }
+
     // This is a method to print out a selection of options to the output
-    private void showMainMenu(){
-        System.out.println("\n--- MAIN MENU ---");
+    private void showChairmanMenu(){
+        System.out.println("\n--- KLUBFORMAND MENU ---");
         System.out.println("1. Add New Member");
         System.out.println("2. View All Members");
         System.out.println("3. Save Data");
+        System.out.println("0. Exit");
+        System.out.print("Select an option: ");
+    }
+
+    private void showCashierMenu(){
+        System.out.println("\n--- KASSER MENU ---");
+        System.out.println("1. Vis forventede indbetalinger efter beløb");
+        System.out.println("0. Exit");
+        System.out.print("Select an option: ");
+    }
+
+    private void showTrainerMenu(){
+        System.out.println("\n--- TRÆNER MENU ---");
+        System.out.println("1. Registrer dagens bedste træningsresultat for en spiller");
+        System.out.println("2. Indtast tuneringsresultater");
+        System.out.println("3. Se top fem ranglister");
         System.out.println("0. Exit");
         System.out.print("Select an option: ");
     }
@@ -72,6 +150,22 @@ System.out.println(testMember.getClass().getSimpleName());
         }
     }
 
+    private void getPaymentList(){
+
+    }
+
+    private void registerBestResult(){
+
+    }
+
+    private void registerTournamentResult(){
+
+    }
+
+    private void getTopFive(){
+
+    }
+
     // This will save and close the program
     private void saveAndExit(){
 
@@ -85,4 +179,5 @@ System.out.println(testMember.getClass().getSimpleName());
             return -1;
         }
     }
+
 }
