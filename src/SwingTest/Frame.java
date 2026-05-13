@@ -17,7 +17,7 @@ public class Frame extends JFrame implements ActionListener {
     JTextField fullName,gender,birthDayOfMonth,birthMonth,birthYear;
     JLabel fullNameLabel,genderLabel,birthDayOfMonthLabel,birthMonthLabel,birthYearLabel;
     ArrayList<Member> allmembers = new ArrayList<>();
-    Filehandler filehandler = new Filehandler();
+    MemberHandler memberHandler = new MemberHandler();
     public Frame(){
         this.setSize(500,500); //Flowmanager overwriter?
         this.setLayout(new FlowLayout());
@@ -122,7 +122,7 @@ public class Frame extends JFrame implements ActionListener {
         }
     }
  public String[] getNameArray() {
-     allmembers = filehandler.load();
+     allmembers = memberHandler.load();
      int countFrom = 0;
 
      String[] array = new String[allmembers.size()];

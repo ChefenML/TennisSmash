@@ -1,6 +1,6 @@
 package SwingTest;
 
-import FileHandler.Filehandler;
+import FileHandler.MemberHandler;
 import Member.Member;
 
 import javax.swing.*;
@@ -14,7 +14,7 @@ public class Panel extends JPanel {
     JTable userTable;
     JScrollPane scrollPane;
     ArrayList<Member> memberList;
-    Filehandler fileHandler;
+    MemberHandler fileHandler;
     Object[][] member2dArray;
 
     public Panel() {

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 import static java.lang.Boolean.parseBoolean;
 
-public class Filehandler implements FileHandling<Member,Member>{
+public class MemberHandler implements FileHandling<Member,Member>{
     private static final String MEMBER_FILE = "src/Data/members.csv";
 
     ArrayList<Member> memberList = new ArrayList<>();

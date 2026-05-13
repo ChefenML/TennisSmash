@@ -11,7 +11,7 @@ public class PaymentHandler implements FileHandling<Payment, PaymentLoader>{
     private static final String PAYMENTS_FILE = "src/Data/payments.csv";
     ArrayList<Member> memberList = new ArrayList<>();
     ArrayList<PaymentLoader> paymentList = new ArrayList<>();
-    Filehandler filehandler = new Filehandler();
+    MemberHandler filehandler = new MemberHandler();
 
     @Override
     public void save(Payment p) {
