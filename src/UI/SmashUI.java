@@ -5,6 +5,7 @@ import FileHandler.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.Scanner;
 import java.util.logging.FileHandler;
 
@@ -140,9 +141,9 @@ public class SmashUI {
 
     // This will be a method for adding a member object to a list
     private void addNewMember(){
-        Member testMember = new Member("John", 3, 'm', 1990, 5, 1, MemberType.SENIOR, GameTypes.SINGLE, Exerciser.EXERCISE);
-        Member test2Member = new Member("John", 3, 'm', 1990, 5, 1, MemberType.SENIOR, GameTypes.DOUBLE, Exerciser.EXERCISE);
-        //String name, int memberID, char gender, int birthYear, int birthMonth, int birthDayOfMonth, MemberType memberType, GameTypes gameTypes, Exerciser exerciser){
+        Member testMember = new Member("John", 3, 'm', 1990, 5, 1, MemberType.SENIOR, EnumSet.of(GameTypes.SINGLE), Exerciser.EXERCISE);
+        Member test2Member = new Member("John", 3, 'm', 1990, 5, 1, MemberType.SENIOR, EnumSet.of(GameTypes.DOUBLE), Exerciser.EXERCISE);
+        //String name, int memberID, char gender, int birthYear, int birthMonth, int birthDayOfMonth, MemberType memberType, EnumSet.of(GameTypes.xxx) (adskilles med , ), Exerciser exerciser){
 System.out.println(testMember.getClass().getSimpleName());
     }
 
