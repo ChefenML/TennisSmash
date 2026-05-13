@@ -9,6 +9,7 @@ import java.util.EnumSet;
 import java.util.Scanner;
 import java.util.logging.FileHandler;
 
+import static Member.Colors.*;
 import static Member.Exerciser.EXERCISE;
 import static Member.GameTypes.SINGLE;
 
@@ -16,11 +17,6 @@ public class SmashUI {
     private MemberFactory factory;
     private Filehandler fileHandler;
     private Scanner scanner;
-    public static final String RESET = "\u001B[0m";
-    public static final String RED = "\u001B[31m";
-    public static final String GREEN = "\u001B[32m";
-    public static final String YELLOW = "\u001B[33m";
-    public static final String BLUE = "\u001B[34m";
 
     // Creates a constructor to make sure the class has the necessary tools
     public SmashUI() throws IOException {
