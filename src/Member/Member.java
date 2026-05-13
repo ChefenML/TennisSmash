@@ -2,6 +2,7 @@ package Member;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.EnumSet;
 
 public class Member implements SmashFee {
 
@@ -13,11 +14,11 @@ public class Member implements SmashFee {
     private int birthYear;
     private int birthMonth;
     private int birthDayOfMonth;
-    private GameTypes gameTypes;
+    private EnumSet<GameTypes> gameTypes;
     private Exerciser exerciser;
 
     //Konstruktør
-    public Member(String name, int memberID, char gender, int birthYear, int birthMonth, int birthDayOfMonth, MemberType memberType, GameTypes gameTypes, Exerciser exerciser){
+    public Member(String name, int memberID, char gender, int birthYear, int birthMonth, int birthDayOfMonth, MemberType memberType, EnumSet<GameTypes> gameTypes, Exerciser exerciser){
         this.name = name;
         this.memberID = memberID;
         this.gender = gender;
@@ -59,8 +60,8 @@ public class Member implements SmashFee {
         return memberType.name();
     }
 
-    public String getGameTypes(){
-        return gameTypes.name();
+    public EnumSet<GameTypes> getGameTypes(){
+        return gameTypes;
     }
 
     public String getExerciser(){
