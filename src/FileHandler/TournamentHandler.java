@@ -2,6 +2,7 @@ package FileHandler;
 
 import java.util.ArrayList;
 
+
 public class TournamentHandler implements FileHandling<Tournament,TournamentLoader> {
     private static final String TOURNAMENT_FILE = "src/Data/tournament.csv";
 
