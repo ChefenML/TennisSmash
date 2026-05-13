@@ -6,7 +6,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-public interface FileHandling<T> {
-    void save(T t);
+public interface FileHandling<G,T> {
+    void save(G G);
     ArrayList<T> load();
 }

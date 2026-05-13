@@ -1,16 +1,16 @@
 package FileHandler;
 
 import Member.Member;
-
+import Payment.*;
 import java.io.*;
 import java.util.ArrayList;
 
 import static java.lang.Boolean.parseBoolean;
 
-public class PaymentHandler implements FileHandling<Payment>{
+public class PaymentHandler implements FileHandling<Payment, PaymentLoader>{
     private static final String PAYMENTS_FILE = "src/Data/payments.csv";
     ArrayList<Member> memberList = new ArrayList<>();
-    ArrayList<Payment> paymentList = new ArrayList<>();
+    ArrayList<PaymentLoader> paymentList = new ArrayList<>();
     Filehandler filehandler = new Filehandler();
 
     @Override
@@ -20,7 +20,7 @@ public class PaymentHandler implements FileHandling<Payment>{
 
             String paymentData =
                     p.getName() + "|" +
-                    p.getMemberID() + "|" +
+                    p.getMemberId() + "|" +
                     p.hasPaid() + "|" +
                     p.getSubscriptionPrice() + "|";
 
@@ -35,10 +35,10 @@ public class PaymentHandler implements FileHandling<Payment>{
 
 
     @Override
-    public ArrayList<Payment> load() {
+    public ArrayList<PaymentLoader> load() {
 
             memberList = filehandler.load();
-            Payment newPayment = null;
+            PaymentLoader newPaymentLoader = null;
             String line;
 
             try (BufferedReader reader = new BufferedReader(new FileReader(PAYMENTS_FILE))) {
@@ -54,13 +54,13 @@ public class PaymentHandler implements FileHandling<Payment>{
                     boolean hasPaid = parseBoolean(paymentData[2]);
                     int subscriptionPrice = Integer.parseInt(paymentData[3]);
                 //create Payment
-                    newPayment = new Payment(name, memberID, hasPaid, subscriptionPrice);
+                    newPaymentLoader = new PaymentLoader(memberID, hasPaid);
 //                        p.getMemberID()    + "|" +
 //                        p.getName() + "|" +
 //                        p.hasPaid() + "|" +
 //                        p.getSubscription() + "|" +
 
-                    paymentList.add(newPayment);
+                    paymentList.add(newPaymentLoader);
                 }
 
 

@@ -15,7 +15,8 @@ public class Panel extends JPanel {
     JScrollPane scrollPane;
     ArrayList<Member> memberList;
     Filehandler fileHandler;
-    String[][] member2dArray;
+    Object[][] member2dArray;
+
     public Panel() {
         panel = new JPanel();
         this.setPreferredSize(new Dimension(800,600));
@@ -30,13 +31,9 @@ public class Panel extends JPanel {
 //
 //        scrollPane = new JScrollPane(userTable);
 
-        String[] tableNames = {"Navn", "Medlem", "Køn"};
-        String[][] tableData = {
-                {"Fakenavn1","1","M"},
-                {"Fakenavn2","2","F"},
-                {"Fakenavn3","3","F"},
-                {"Fakenavn4","4","M"}
-        };
+        Object[] tableNames = {"Navn", "Medlem", "Køn", "Fødselsår", "Fødselsmåned", "Fødselsdag","MedlemsType","Discipliner","PRO/AM"};
+        Object[][] tableData = create2dArray();
+
 
         userTable = new JTable(tableData,tableNames);
 //        userTable.getTableHeader().setBounds(50,30,700,20);
@@ -56,15 +53,17 @@ public class Panel extends JPanel {
 
     }
 
-    public void create2dArray(){
-       member2dArray = new String[memberList.size()][9];
+    public Object[][] create2dArray(){
+       member2dArray = new Object[memberList.size()][9];
        int i = 0;
        for(Member m : memberList){
-           // member2dArray =[i][m.getName(),m.getMemberID(),m.getGender(), m.getBirthYear(),m.getBirthMonth(),m.birthDayOfMonth(), m.getMemberType(),m.getGameTypes(),m.getExerciser()];
-            i++;
-            //John|1|M|1995|3|20|SENIOR|PASSIVE|PASSIVE
-        }
+           Object[] b = {m.getName(), m.getMemberID(), m.getGender(), m.getBirthYear(), m.getBirthMonth(), m.birthDayOfMonth(), m.getMemberType(), m.getGameTypes(), m.getExerciser()};
+           member2dArray[i] = b;
+           i++;
+       }
+        return member2dArray;
     }
+
     public void fillMembers(){
         memberList = fileHandler.load();
     }
