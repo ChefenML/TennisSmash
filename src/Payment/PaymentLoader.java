@@ -1,6 +1,6 @@
 package Payment;
 
-import FileHandler.Filehandler;
+import FileHandler.*;
 import Member.Member;
 
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ public class PaymentLoader {
     Member loadMember;
     int memberId;
     boolean hasPaid;
-    Filehandler memberload;
+    MemberHandler memberload;
     ArrayList<Member> members = memberload.load();
 
     public PaymentLoader(int memberId, boolean hasPaid){

@@ -15,13 +15,13 @@ import static Member.GameTypes.SINGLE;
 
 public class SmashUI {
     private MemberFactory factory;
-    private Filehandler fileHandler;
+    private MemberHandler fileHandler;
     private Scanner scanner;
 
     // Creates a constructor to make sure the class has the necessary tools
     public SmashUI() throws IOException {
         this.factory = new MemberFactory();
-        this.fileHandler = new Filehandler();
+        this.fileHandler = new MemberHandler();
         this.scanner = new Scanner(System.in);
     }
 

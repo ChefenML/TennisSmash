@@ -7,6 +7,7 @@ import java.io.*;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
+import java.util.EnumSet;
 
 import static java.lang.Boolean.parseBoolean;
 
@@ -20,7 +21,7 @@ public class MemberHandler implements FileHandling<Member,Member>{
     public ArrayList<Member> load(){
     String line;
         Member newMember = null;
-        GameTypes gameType = null;
+        EnumSet<GameTypes> gameType = null;
         Exerciser exerciser = null;
         MemberType memberType = null;
 
@@ -45,7 +46,7 @@ public class MemberHandler implements FileHandling<Member,Member>{
             Period getPeriod = Period.between(completeBirthday,LocalDate.now());
             //Hvad sker der hvis String array er kortere end 7?
                 memberType = MemberType.valueOf(memberData[6]);
-                gameType = GameTypes.valueOf(memberData[7]);
+                gameType = Enum.valueOf(memberData[7]);
                 exerciser = Exerciser.valueOf(memberData[8]);
 
                 newMember = new Member(name, memberID, gender, birthYear, birthMonth, birthDayOfMonth, memberType, gameType, exerciser);
