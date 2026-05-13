@@ -15,6 +15,11 @@ public class SmashUI {
     private MemberFactory factory;
     private Filehandler fileHandler;
     private Scanner scanner;
+    public static final String RESET = "\u001B[0m";
+    public static final String RED = "\u001B[31m";
+    public static final String GREEN = "\u001B[32m";
+    public static final String YELLOW = "\u001B[33m";
+    public static final String BLUE = "\u001B[34m";
 
     // Creates a constructor to make sure the class has the necessary tools
     public SmashUI() throws IOException {
@@ -39,7 +44,7 @@ public class SmashUI {
                 case 2 -> isCashier();
                 case 3 -> isTrainer();
                 case 0 -> running = false;
-                default ->  System.out.println("Invalid choice try again!");
+                default ->  System.out.println(RED + "Invalid choice try again!" + RESET);
             }
 
         }
@@ -69,7 +74,7 @@ public class SmashUI {
                 case 2 -> showAllMembers();
                 case 3 -> saveAndExit();
                 case 0 -> running = false;
-                default -> System.out.println("Invalid choice try again!");
+                default -> System.out.println(RED + "Invalid choice try again!" + RESET);
             }
         }
     }
@@ -87,7 +92,7 @@ public class SmashUI {
                 case 3 -> getTopFive();
                 case 4 -> saveAndExit();
                 case 0 -> running = false;
-                default -> System.out.println("Invalid choice try again!");
+                default -> System.out.println(RED + "Invalid choice try again!" + RESET);
             }
         }
     }
@@ -102,7 +107,7 @@ public class SmashUI {
             switch (choice){
                 case 1 -> getPaymentList();
                 case 0 -> running = false;
-                default -> System.out.println("Invalid choice try again!");
+                default -> System.out.println(RED + "Invalid choice try again!" + RESET);
             }
         }
     }
