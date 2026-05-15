@@ -50,7 +50,7 @@ public class SmashUI {
     }
 
     private void showRoleMenu(){
-        System.out.println("\nLOG IN SOM: ");
+        System.out.println("\nLOG IND SOM: ");
         System.out.println("1. Klubformand");
         System.out.println("2. Kasser");
         System.out.println("3. Træner");
@@ -137,10 +137,44 @@ public class SmashUI {
 
     // This will be a method for adding a member object to a list
     private void addNewMember(){
-        Member testMember = new Member("John", 3, 'm', 1990, 5, 1, MemberType.SENIOR, EnumSet.of(GameTypes.SINGLE), Exerciser.EXERCISE);
-        Member test2Member = new Member("John", 3, 'm', 1990, 5, 1, MemberType.SENIOR, EnumSet.of(GameTypes.DOUBLE), Exerciser.EXERCISE);
-        //String name, int memberID, char gender, int birthYear, int birthMonth, int birthDayOfMonth, MemberType memberType, EnumSet.of(GameTypes.xxx) (adskilles med , ), Exerciser exerciser){
-System.out.println(testMember.getClass().getSimpleName());
+        System.out.println("Indtast navn: ");
+        String name = scanner.nextLine();
+
+        System.out.println("Indtast memberID: ");
+        int memberID = Integer.parseInt(scanner.nextLine());
+
+        System.out.println("Indtast køn (M for mand, F for kvinde): ");
+        char gender = scanner.nextLine().charAt(0); // charAt(0) tager det første tegn i strengen"" og giver et char''. fx "M" bliver til 'M'
+
+        System.out.println("Indtast fødselsåret (Eks. 1998 eller 2005): ");
+        int birthYear = Integer.parseInt(scanner.nextLine());
+
+        System.out.println("Indtast fødselsmåned (Eks. 3 eller 11: ");
+        int birthMonth = Integer.parseInt(scanner.nextLine());
+
+        System.out.println("Indtast dagen medlemmet er født (Eks 2 eller 20: ");
+        int birthDayOfMonth = Integer.parseInt(scanner.nextLine());
+
+        System.out.println("Indtast medlemstype (vælg én: JUNIOR, SENIOR, VETERAN): ");
+        MemberType memberType = MemberType.valueOf(scanner.nextLine().toUpperCase());
+
+        System.out.println("Indtast disciplin (vælg én eller flere: SINGLE, DOUBLE,MIXED,PASSIVE): ");
+        String[] gameTypeStrings = scanner.nextLine().toUpperCase().split(","); // læser det brugeren taster, fx "single,double" - gør til store bogstaver og splitter på komma, så vi får ["SINGLE", "DOUBLE"].
+        EnumSet<GameTypes> gameTypes = EnumSet.noneOf(GameTypes.class); // opretter et tomt EnumSet som kan modtage GameTypes. ligesom i MemberHandler.java
+        for (String gt : gameTypeStrings) { // går igennem listen én ad gangen. fx først "SINGLE", så "DOUBLE"
+            gameTypes.add(GameTypes.valueOf(gt.trim())); // trim fjerner evt. mellemrum så fx SINGLE, DOUBLE også virker. Derefter konverterer valueof teksten til enum-værdien og tilføjer til EnumSet
+            // så efter loopet er færdigt, indeholder gameTypes alle de værdier brugeren tastede ind
+        }
+
+        System.out.println("Indtast om brugeren er motionist, konkurrencespiller eller er passivt medlem (vælg én: COMPETITIVE, EXERCISE, PASSIVE): ");
+        Exerciser exerciser = Exerciser.valueOf(scanner.nextLine().toUpperCase());
+
+        Member newMember = new Member(name, memberID, gender, birthYear, birthMonth, birthDayOfMonth, memberType, gameTypes, exerciser);
+        fileHandler.save(newMember); // kalder save metoden i MemberHandler og sender det nye member med så det gemmes i CSV filen
+
+
+
+
     }
 
     // This will be a method for showing all members
