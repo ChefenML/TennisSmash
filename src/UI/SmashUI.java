@@ -29,7 +29,7 @@ public class SmashUI {
     public void start() {
         boolean running = true;
 
-        System.out.println("Welcome to the Smash Management System!"
+        System.out.println("Velkommen til Smash Management System!"
                 + "\n--------------------------------");
 
         while (running) {
@@ -41,7 +41,7 @@ public class SmashUI {
                 case 2 -> isCashier();
                 case 3 -> isTrainer();
                 case 0 -> running = false;
-                default ->  System.out.println(RED + "Invalid choice try again!" + RESET);
+                default ->  System.out.println(RED + "Fejl. Prøv igen!" + RESET);
             }
 
         }
@@ -50,12 +50,12 @@ public class SmashUI {
     }
 
     private void showRoleMenu(){
-        System.out.println("\nLOG IN SOM: ");
+        System.out.println("\nLOG IND SOM: ");
         System.out.println("1. Klubformand");
         System.out.println("2. Kasser");
         System.out.println("3. Træner");
-        System.out.println("0. Exit");
-        System.out.print("Select an option: ");
+        System.out.println("0. Afslut");
+        System.out.print("Vælg en mulighed: ");
     }
 
 
@@ -71,7 +71,7 @@ public class SmashUI {
                 case 2 -> showAllMembers();
                 case 3 -> saveAndExit();
                 case 0 -> running = false;
-                default -> System.out.println(RED + "Invalid choice try again!" + RESET);
+                default -> System.out.println(RED + "Fejl. Prøv igen!" + RESET);
             }
         }
     }
@@ -89,7 +89,7 @@ public class SmashUI {
                 case 3 -> getTopFive();
                 case 4 -> saveAndExit();
                 case 0 -> running = false;
-                default -> System.out.println(RED + "Invalid choice try again!" + RESET);
+                default -> System.out.println(RED + "Fejl. Prøv igen!" + RESET);
             }
         }
     }
@@ -104,7 +104,7 @@ public class SmashUI {
             switch (choice){
                 case 1 -> getPaymentList();
                 case 0 -> running = false;
-                default -> System.out.println(RED + "Invalid choice try again!" + RESET);
+                default -> System.out.println(RED + "Fejl. Prøv igen!" + RESET);
             }
         }
     }
@@ -112,35 +112,69 @@ public class SmashUI {
     // This is a method to print out a selection of options to the output
     private void showChairmanMenu(){
         System.out.println("\n--- KLUBFORMAND MENU ---");
-        System.out.println("1. Add New Member");
-        System.out.println("2. View All Members");
-        System.out.println("3. Save Data");
-        System.out.println("0. Exit");
-        System.out.print("Select an option: ");
+        System.out.println("1. Tilføj nyt medlem");
+        System.out.println("2. Vis liste over alle medlemmere");
+        System.out.println("3. Gem ændringer");
+        System.out.println("0. Afslut");
+        System.out.print("Vælg en mulighed: ");
     }
 
     private void showCashierMenu(){
         System.out.println("\n--- KASSER MENU ---");
         System.out.println("1. Vis forventede indbetalinger efter beløb");
-        System.out.println("0. Exit");
-        System.out.print("Select an option: ");
+        System.out.println("0. Afslut");
+        System.out.print("Vælg en mulighed: ");
     }
 
     private void showTrainerMenu(){
         System.out.println("\n--- TRÆNER MENU ---");
         System.out.println("1. Registrer dagens bedste træningsresultat for en spiller");
         System.out.println("2. Indtast tuneringsresultater");
-        System.out.println("3. Se top fem ranglister");
-        System.out.println("0. Exit");
-        System.out.print("Select an option: ");
+        System.out.println("3. Se top 5 ranglister");
+        System.out.println("0. Afslut");
+        System.out.print("Vælg en mulighed: ");
     }
 
     // This will be a method for adding a member object to a list
     private void addNewMember(){
-        Member testMember = new Member("John", 3, 'm', 1990, 5, 1, MemberType.SENIOR, EnumSet.of(GameTypes.SINGLE), Exerciser.EXERCISE);
-        Member test2Member = new Member("John", 3, 'm', 1990, 5, 1, MemberType.SENIOR, EnumSet.of(GameTypes.DOUBLE), Exerciser.EXERCISE);
-        //String name, int memberID, char gender, int birthYear, int birthMonth, int birthDayOfMonth, MemberType memberType, EnumSet.of(GameTypes.xxx) (adskilles med , ), Exerciser exerciser){
-System.out.println(testMember.getClass().getSimpleName());
+        System.out.println("Indtast navn: ");
+        String name = scanner.nextLine();
+
+        System.out.println("Indtast memberID: ");
+        int memberID = Integer.parseInt(scanner.nextLine());
+
+        System.out.println("Indtast køn (M for mand, F for kvinde): ");
+        char gender = scanner.nextLine().charAt(0); // charAt(0) tager det første tegn i strengen"" og giver et char''. fx "M" bliver til 'M'
+
+        System.out.println("Indtast fødselsåret (Eks. 1998 eller 2005): ");
+        int birthYear = Integer.parseInt(scanner.nextLine());
+
+        System.out.println("Indtast fødselsmåned (Eks. 3 eller 11: ");
+        int birthMonth = Integer.parseInt(scanner.nextLine());
+
+        System.out.println("Indtast dagen medlemmet er født (Eks 2 eller 20: ");
+        int birthDayOfMonth = Integer.parseInt(scanner.nextLine());
+
+        System.out.println("Indtast medlemstype (vælg én: JUNIOR, SENIOR, VETERAN): ");
+        MemberType memberType = MemberType.valueOf(scanner.nextLine().toUpperCase());
+
+        System.out.println("Indtast disciplin (vælg én eller flere: SINGLE, DOUBLE, MIXED, PASSIVE): ");
+        String[] gameTypeStrings = scanner.nextLine().toUpperCase().split(","); // læser det brugeren taster, fx "single,double" - gør til store bogstaver og splitter på komma, så vi får ["SINGLE", "DOUBLE"].
+        EnumSet<GameTypes> gameTypes = EnumSet.noneOf(GameTypes.class); // opretter et tomt EnumSet som kan modtage GameTypes. ligesom i MemberHandler.java
+        for (String gt : gameTypeStrings) { // går igennem listen én ad gangen. fx først "SINGLE", så "DOUBLE"
+            gameTypes.add(GameTypes.valueOf(gt.trim())); // trim fjerner evt. mellemrum så fx SINGLE, DOUBLE også virker. Derefter konverterer valueof teksten til enum-værdien og tilføjer til EnumSet
+            // så efter loopet er færdigt, indeholder gameTypes alle de værdier brugeren tastede ind
+        }
+
+        System.out.println("Indtast om brugeren er motionist, konkurrencespiller eller er passivt medlem (vælg én: COMPETITIVE, EXERCISE, PASSIVE): ");
+        Exerciser exerciser = Exerciser.valueOf(scanner.nextLine().toUpperCase());
+
+        Member newMember = new Member(name, memberID, gender, birthYear, birthMonth, birthDayOfMonth, memberType, gameTypes, exerciser);
+        fileHandler.save(newMember); // kalder save metoden i MemberHandler og sender det nye member med så det gemmes i CSV filen
+
+
+
+
     }
 
     // This will be a method for showing all members

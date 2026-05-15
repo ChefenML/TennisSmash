@@ -82,7 +82,7 @@ public class Member implements SmashFee {
 
     //ø i køn laver noget hyperlink lign. (Kig det igennem)
     public String toString(){
-        return "Navn: " + name + " - MedlemsID: " + memberID + " - Kon: " + gender + " - Alder: " + getAge();
+        return "Navn: " + name + " - MedlemsID: " + memberID + " - Kon: " + gender + " - Alder: " + getAge() + " - GameTypes: " + getGameTypes();
     }
 
     //Metoden fra vores interface SmashFee
