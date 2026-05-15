@@ -29,7 +29,7 @@ public class SmashUI {
     public void start() {
         boolean running = true;
 
-        System.out.println("Welcome to the Smash Management System!"
+        System.out.println("Velkommen til Smash Management System!"
                 + "\n--------------------------------");
 
         while (running) {
@@ -41,7 +41,7 @@ public class SmashUI {
                 case 2 -> isCashier();
                 case 3 -> isTrainer();
                 case 0 -> running = false;
-                default ->  System.out.println(RED + "Invalid choice try again!" + RESET);
+                default ->  System.out.println(RED + "Fejl. Prøv igen!" + RESET);
             }
 
         }
@@ -54,8 +54,8 @@ public class SmashUI {
         System.out.println("1. Klubformand");
         System.out.println("2. Kasser");
         System.out.println("3. Træner");
-        System.out.println("0. Exit");
-        System.out.print("Select an option: ");
+        System.out.println("0. Afslut");
+        System.out.print("Vælg en mulighed: ");
     }
 
 
@@ -71,7 +71,7 @@ public class SmashUI {
                 case 2 -> showAllMembers();
                 case 3 -> saveAndExit();
                 case 0 -> running = false;
-                default -> System.out.println(RED + "Invalid choice try again!" + RESET);
+                default -> System.out.println(RED + "Fejl. Prøv igen!" + RESET);
             }
         }
     }
@@ -89,7 +89,7 @@ public class SmashUI {
                 case 3 -> getTopFive();
                 case 4 -> saveAndExit();
                 case 0 -> running = false;
-                default -> System.out.println(RED + "Invalid choice try again!" + RESET);
+                default -> System.out.println(RED + "Fejl. Prøv igen!" + RESET);
             }
         }
     }
@@ -104,7 +104,7 @@ public class SmashUI {
             switch (choice){
                 case 1 -> getPaymentList();
                 case 0 -> running = false;
-                default -> System.out.println(RED + "Invalid choice try again!" + RESET);
+                default -> System.out.println(RED + "Fejl. Prøv igen!" + RESET);
             }
         }
     }
@@ -112,27 +112,27 @@ public class SmashUI {
     // This is a method to print out a selection of options to the output
     private void showChairmanMenu(){
         System.out.println("\n--- KLUBFORMAND MENU ---");
-        System.out.println("1. Add New Member");
-        System.out.println("2. View All Members");
-        System.out.println("3. Save Data");
-        System.out.println("0. Exit");
-        System.out.print("Select an option: ");
+        System.out.println("1. Tilføj nyt medlem");
+        System.out.println("2. Vis liste over alle medlemmere");
+        System.out.println("3. Gem ændringer");
+        System.out.println("0. Afslut");
+        System.out.print("Vælg en mulighed: ");
     }
 
     private void showCashierMenu(){
         System.out.println("\n--- KASSER MENU ---");
         System.out.println("1. Vis forventede indbetalinger efter beløb");
-        System.out.println("0. Exit");
-        System.out.print("Select an option: ");
+        System.out.println("0. Afslut");
+        System.out.print("Vælg en mulighed: ");
     }
 
     private void showTrainerMenu(){
         System.out.println("\n--- TRÆNER MENU ---");
         System.out.println("1. Registrer dagens bedste træningsresultat for en spiller");
         System.out.println("2. Indtast tuneringsresultater");
-        System.out.println("3. Se top fem ranglister");
-        System.out.println("0. Exit");
-        System.out.print("Select an option: ");
+        System.out.println("3. Se top 5 ranglister");
+        System.out.println("0. Afslut");
+        System.out.print("Vælg en mulighed: ");
     }
 
     // This will be a method for adding a member object to a list
