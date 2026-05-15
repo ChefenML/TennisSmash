@@ -83,6 +83,18 @@ public class MemberHandler implements FileHandling<Member,Member>{
         //try with resources, no need to close stuff
 
         try(PrintWriter writer = new PrintWriter(new FileWriter(MEMBER_FILE,true))){
+
+            // konverterer EnumSet til fx "SINGLE, MIXED" uden []
+            String gameTypesString = "";
+            for (GameTypes gt : member.getGameTypes()) { //hvis brugeren kun har indtastet én værdi i EnumSettet, så kører loopet kun én gang og gameTypeString bliver fx "SINGLE"
+                // tilføjer kun komma hvis der allerede er en værdi i strengen. så der ikke står ",SINGLE,MIXED"
+                if (!gameTypesString.isEmpty()) {
+                    gameTypesString += ",";
+                }
+                // tilføjer enum-værdiens navn som tekst
+                gameTypesString += gt.name();
+                }
+
            //Laver String med memberData og separarer med | mellem data, men fødsesdato er med -;
 
             String memberData =
@@ -91,10 +103,13 @@ public class MemberHandler implements FileHandling<Member,Member>{
                            member.getGender() + "|" +
                            member.getBirthYear() + "|" +
                            member.getBirthMonth() + "|" +
-                           member.birthDayOfMonth() + "|";
+                           member.birthDayOfMonth() + "|" +
+                           member.getMemberType() + "|" +
+                           gameTypesString+ "|" +
+                           member.getExerciser();
 
 
-           writer.println(memberData + "\n");
+           writer.println(memberData);
 
            //insert exception here
         } catch (IOException e) {

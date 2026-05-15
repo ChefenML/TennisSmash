@@ -158,7 +158,7 @@ public class SmashUI {
         System.out.println("Indtast medlemstype (vælg én: JUNIOR, SENIOR, VETERAN): ");
         MemberType memberType = MemberType.valueOf(scanner.nextLine().toUpperCase());
 
-        System.out.println("Indtast disciplin (vælg én eller flere: SINGLE, DOUBLE,MIXED,PASSIVE): ");
+        System.out.println("Indtast disciplin (vælg én eller flere: SINGLE, DOUBLE, MIXED, PASSIVE): ");
         String[] gameTypeStrings = scanner.nextLine().toUpperCase().split(","); // læser det brugeren taster, fx "single,double" - gør til store bogstaver og splitter på komma, så vi får ["SINGLE", "DOUBLE"].
         EnumSet<GameTypes> gameTypes = EnumSet.noneOf(GameTypes.class); // opretter et tomt EnumSet som kan modtage GameTypes. ligesom i MemberHandler.java
         for (String gt : gameTypeStrings) { // går igennem listen én ad gangen. fx først "SINGLE", så "DOUBLE"
