@@ -126,9 +126,9 @@ public class MemberHandler implements FileHandling<Member,Member>{
     }
 
     public void showMembers(){
-        ArrayList<Member> m = load();
-        for(Member member : m){
-            System.out.println(member);
+        ArrayList<Member> member = load();
+        for(Member m : member){
+            System.out.println(m);
         }
     }
 
