@@ -85,11 +85,12 @@ public class MemberHandler implements FileHandling<Member,Member>{
 
     public void save(Member member) {
         //try with resources, no need to close stuff
+        String gameTypesString = "";
 
         try(PrintWriter writer = new PrintWriter(new FileWriter(MEMBER_FILE,true))){
 
             // konverterer EnumSet til fx "SINGLE, MIXED" uden []
-            String gameTypesString = "";
+
             for (GameTypes gt : member.getGameTypes()) { //hvis brugeren kun har indtastet én værdi i EnumSettet, så kører loopet kun én gang og gameTypeString bliver fx "SINGLE"
                 // tilføjer kun komma hvis der allerede er en værdi i strengen. så der ikke står ",SINGLE,MIXED"
                 if (!gameTypesString.isEmpty()) {
@@ -119,6 +120,7 @@ public class MemberHandler implements FileHandling<Member,Member>{
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        memberList.add(member);
     }
 
     public int generatorMemberId(){
@@ -126,8 +128,8 @@ public class MemberHandler implements FileHandling<Member,Member>{
     }
 
     public void showMembers(){
-        ArrayList<Member> member = load();
-        for(Member m : member){
+        //ArrayList<Member> member = load();
+        for(Member m : memberList){
             System.out.println(m);
         }
     }
