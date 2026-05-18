@@ -63,7 +63,7 @@ public class Payment {
 
         @Override
         public String toString(){
-            return "Navn: " + getName() + " - MedlemsID: " + getMemberId() + " - Kontigent " + getSubscriptionPrice() + " kr - Betalt:" + hasPaid();
+            return "Navn: " + getName() + " - MedlemsID: " + getMemberId() + " - Kontigent: " + getSubscriptionPrice();
         }
 
 }

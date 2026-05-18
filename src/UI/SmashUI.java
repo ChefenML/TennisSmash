@@ -2,6 +2,8 @@ package UI;
 import Member.*;
 import Member.MemberFactory;
 import FileHandler.*;
+import Payment.Payment;
+
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -187,6 +189,11 @@ public class SmashUI {
     }
 
     private void getPaymentList(){
+        ArrayList<Member> members = fileHandler.load();
+        for (Member m : members) {
+            Payment payment = new Payment(m, false);
+            System.out.println(payment);
+        }
 
     }
 
