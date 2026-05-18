@@ -140,8 +140,9 @@ public class SmashUI {
         System.out.println("Indtast navn: ");
         String name = scanner.nextLine();
 
-        System.out.println("Indtast memberID: ");
-        int memberID = Integer.parseInt(scanner.nextLine());
+
+        int memberID = fileHandler.generatorMemberId();
+        System.out.println(name + "memberID: " + memberID);
 
         System.out.println("Indtast køn (M for mand, F for kvinde): ");
         char gender = scanner.nextLine().charAt(0); // charAt(0) tager det første tegn i strengen"" og giver et char''. fx "M" bliver til 'M'
