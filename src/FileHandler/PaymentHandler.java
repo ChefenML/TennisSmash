@@ -22,9 +22,9 @@ public class PaymentHandler implements FileHandling<Payment, PaymentLoader>{
                     p.getName() + "|" +
                     p.getMemberId() + "|" +
                     p.hasPaid() + "|" +
-                    p.getSubscriptionPrice() + "|";
+                    p.getSubscriptionPrice();
 
-                    writer.println(paymentData + "\n");
+                    writer.println(paymentData);
 
             //insert custom exception here
         } catch (IOException e) {
