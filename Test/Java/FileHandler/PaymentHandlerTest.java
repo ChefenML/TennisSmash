@@ -1,9 +1,10 @@
 package FileHandler;
 
 import Member.*;
-import Payment.Payment;
+import Payment.*;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.EnumSet;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -20,5 +21,11 @@ class PaymentHandlerTest {
 
     @Test
     void load() {
+        ArrayList<PaymentLoader> plist;
+        PaymentHandler phandle = new PaymentHandler();
+        plist = phandle.load();
+        for(PaymentLoader p : plist){
+            System.out.println(p);
+        }
     }
 }

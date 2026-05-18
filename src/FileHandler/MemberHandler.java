@@ -19,6 +19,10 @@ public class MemberHandler implements FileHandling<Member,Member>{
     ArrayList<Member> memberList = new ArrayList<>();
     //ArrayList<Payment> paymentList = new ArrayList<>();
 
+    public MemberHandler(){
+        memberList = load();
+    }
+
     public ArrayList<Member> load(){
     String line;
         Member newMember = null;
@@ -99,7 +103,7 @@ public class MemberHandler implements FileHandling<Member,Member>{
 
             String memberData =
                    member.getName() + "|" +
-                           member.getMemberID() + "|" +
+                           generatorMemberId() + "|" +
                            member.getGender() + "|" +
                            member.getBirthYear() + "|" +
                            member.getBirthMonth() + "|" +
@@ -114,6 +118,17 @@ public class MemberHandler implements FileHandling<Member,Member>{
            //insert exception here
         } catch (IOException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    public int generatorMemberId(){
+        return memberList.size()+1;
+    }
+
+    public void showMembers(){
+        ArrayList<Member> m = load();
+        for(Member member : m){
+            System.out.println(member);
         }
     }
 

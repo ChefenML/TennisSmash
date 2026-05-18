@@ -179,11 +179,8 @@ public class SmashUI {
 
     // This will be a method for showing all members
     private void showAllMembers(){
-        ArrayList<Member> test = fileHandler.load();
-        for (Member m : test) {
+        fileHandler.showMembers();
 
-            System.out.println(m);
-        }
     }
 
     private void getPaymentList(){
