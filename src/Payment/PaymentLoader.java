@@ -20,7 +20,4 @@ public class PaymentLoader {
 
     }
 
-    public Member getMembernameFromId(int id){
-        return loadMember = members.get(id-1);
-    }
 }
