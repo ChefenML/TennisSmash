@@ -59,10 +59,11 @@ public class Payment {
     public void setHasPaid(boolean hasPaid) {
         this.hasPaid = hasPaid;
     }
+        //toString metode til at returnerer hvad medlemmet skal betale baseret på deres membertype og haspaid viser om de har betalt. så hvis haspaid er false skylder de det beløb getSubscriptionPrice() returnerer.
 
-
-
-
-
+        @Override
+        public String toString(){
+            return "Navn: " + getName() + " - MedlemsID: " + getMemberId() + " - Kontigent: " + getSubscriptionPrice();
+        }
 
 }
