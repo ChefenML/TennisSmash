@@ -33,6 +33,10 @@ public class Match {
 
     }
 
+    public LocalDate getDate(){
+        return date;
+    }
+
     public int getResult(){
         return result;
     }
