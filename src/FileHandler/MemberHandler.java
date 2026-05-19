@@ -16,8 +16,8 @@ import static java.lang.Boolean.parseBoolean;
 public class MemberHandler implements FileHandling<Member,Member>{
     private static final String MEMBER_FILE = "src/Data/members.csv";
 
-    ArrayList<Member> memberList = new ArrayList<>();
-    //ArrayList<Payment> paymentList = new ArrayList<>();
+    private ArrayList<Member> memberList = new ArrayList<>();
+
 
     public MemberHandler(){
         memberList = load();
@@ -128,7 +128,7 @@ public class MemberHandler implements FileHandling<Member,Member>{
     }
 
     public void showMembers(){
-        //ArrayList<Member> member = load();
+
         for(Member m : memberList){
             System.out.println(m);
         }
