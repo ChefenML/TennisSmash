@@ -7,6 +7,7 @@ import java.io.*;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.EnumSet;
 
 import static java.lang.Boolean.parseBoolean;
@@ -15,13 +16,16 @@ import static java.lang.Boolean.parseBoolean;
 public class MemberHandler implements FileHandling<Member,Member>{
     private static final String MEMBER_FILE = "src/Data/members.csv";
 
-    ArrayList<Member> memberList = new ArrayList<>();
-    //ArrayList<Payment> paymentList = new ArrayList<>();
+    private ArrayList<Member> memberList = new ArrayList<>();
+
+
+    public MemberHandler(){
+        memberList = load();
+    }
 
     public ArrayList<Member> load(){
     String line;
         Member newMember = null;
-        EnumSet<GameTypes> gameType = null;
         Exerciser exerciser = null;
         MemberType memberType = null;
 
@@ -49,18 +53,18 @@ public class MemberHandler implements FileHandling<Member,Member>{
 
                 //Kig på det her senere EnumSet.of(memberData[7]);
                 //Evt. gem det som EnumSet<GameType> GameTypes = EnumSet.of(GameType.SINGLE, GameType.DOUBLE, GameType.MIXED);
-                ////Hener kolonne 7 og spitter på komma, da et medlem kan have flere GameTypes
-                //                String[] gameTypeStrings = memberData[7].split(",");
-                //                //Opretter et tomt EnumSet til at holde medlemmets GameTypes
-                //                EnumSet<GameTypes> gameTypes = EnumSet.noneOf(GameTypes.class);
-                //                //Går gennem hvert GameType navn og konverter det til en enum-værdi (fx GameTypes.SINGLE) og  tilføjer til EnumSet
-                //                for (String gt : gameTypeStrings) {
-                //                    gameTypes.add(GameTypes.valueOf(gt));
-                //                }
-                gameType = EnumSet.of(GameTypes.SINGLE);
+                //Hener kolonne 7 og spitter på komma, da et medlem kan have flere GameTypes
+                                String[] gameTypeStrings = memberData[7].split(",");
+                                //Opretter et tomt EnumSet til at holde medlemmets GameTypes
+                                EnumSet<GameTypes> gameTypes = EnumSet.noneOf(GameTypes.class);
+                                //Går gennem hvert GameType navn og konverter det til en enum-værdi (fx GameTypes.SINGLE) og  tilføjer til EnumSet
+                                for (String gt : gameTypeStrings) {
+                                    gameTypes.add(GameTypes.valueOf(gt));
+                                }
+              //  gameType.add(GameTypes.valueOf(Arrays.toString(memberData[7].split(","))));
                 exerciser = Exerciser.valueOf(memberData[8]);
 
-                newMember = new Member(name, memberID, gender, birthYear, birthMonth, birthDayOfMonth, memberType, gameType, exerciser);
+                newMember = new Member(name, memberID, gender, birthYear, birthMonth, birthDayOfMonth, memberType, gameTypes, exerciser);
 
 
 
@@ -81,11 +85,12 @@ public class MemberHandler implements FileHandling<Member,Member>{
 
     public void save(Member member) {
         //try with resources, no need to close stuff
+        String gameTypesString = "";
 
         try(PrintWriter writer = new PrintWriter(new FileWriter(MEMBER_FILE,true))){
 
             // konverterer EnumSet til fx "SINGLE, MIXED" uden []
-            String gameTypesString = "";
+
             for (GameTypes gt : member.getGameTypes()) { //hvis brugeren kun har indtastet én værdi i EnumSettet, så kører loopet kun én gang og gameTypeString bliver fx "SINGLE"
                 // tilføjer kun komma hvis der allerede er en værdi i strengen. så der ikke står ",SINGLE,MIXED"
                 if (!gameTypesString.isEmpty()) {
@@ -99,7 +104,7 @@ public class MemberHandler implements FileHandling<Member,Member>{
 
             String memberData =
                    member.getName() + "|" +
-                           member.getMemberID() + "|" +
+                           generatorMemberId() + "|" +
                            member.getGender() + "|" +
                            member.getBirthYear() + "|" +
                            member.getBirthMonth() + "|" +
@@ -114,6 +119,18 @@ public class MemberHandler implements FileHandling<Member,Member>{
            //insert exception here
         } catch (IOException e) {
             throw new RuntimeException(e);
+        }
+        memberList.add(member);
+    }
+
+    public int generatorMemberId(){
+        return memberList.size()+1;
+    }
+
+    public void showMembers(){
+
+        for(Member m : memberList){
+            System.out.println(m);
         }
     }
 

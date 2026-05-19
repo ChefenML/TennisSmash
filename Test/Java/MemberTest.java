@@ -1,4 +1,5 @@
 import Member.*;
+import UI.SmashUI;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -39,6 +40,12 @@ class MemberTest {
         Assertions.assertNotNull(memberList);
         Assertions.assertEquals(1, memberList.size());
         Assertions.assertEquals(member1, memberList.getFirst());
+
+    }
+
+    @Test
+    void testSwitchCase(){
+       // SmashUI ui = new SmashUI();
 
     }
 }
