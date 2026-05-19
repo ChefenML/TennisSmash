@@ -3,6 +3,7 @@ import Member.*;
 import Member.MemberFactory;
 import FileHandler.*;
 import Payment.Payment;
+import Sorting.MemberSorter;
 
 
 import java.io.IOException;
@@ -71,7 +72,8 @@ public class SmashUI {
             switch (choice){
                 case 1 -> addNewMember();
                 case 2 -> showAllMembers();
-                case 3 -> saveAndExit();
+                case 3 -> sortMembers();
+                case 4 -> saveAndExit();
                 case 0 -> running = false;
                 default -> System.out.println(RED + "Fejl. Prøv igen!" + RESET);
             }
@@ -116,9 +118,11 @@ public class SmashUI {
         System.out.println("\n--- KLUBFORMAND MENU ---");
         System.out.println("1. Tilføj nyt medlem");
         System.out.println("2. Vis liste over alle medlemmere");
-        System.out.println("3. Gem ændringer");
+        System.out.println("3. Vis liste sorteret");
+        System.out.println("4. Gem ændringer");
         System.out.println("0. Afslut");
         System.out.print("Vælg en mulighed: ");
+
     }
 
     private void showCashierMenu(){
@@ -195,6 +199,26 @@ public class SmashUI {
 
     }
 
+    private void sortMembers(){
+        System.out.println("Sorter efter:");
+        System.out.println("1. Navn");
+        System.out.println("2. Alder");
+        System.out.println("Vælg en mulighed: ");
+        int choice = getIntegerInput();
+
+        ArrayList<Member> members = fileHandler.load();
+
+        if (choice == 1) {
+            MemberSorter.sortByName(members);
+        } else if (choice == 2) {
+            MemberSorter.sortByAge(members);
+        }
+
+        for (Member m : members) {
+            System.out.println(m);
+        }
+    }
+
     private void registerBestResult(){
 
     }
@@ -211,6 +235,7 @@ public class SmashUI {
     private void saveAndExit(){
 
     }
+
 
     // This is an exception for handling integers
     private int getIntegerInput(){
