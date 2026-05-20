@@ -60,7 +60,7 @@ public class SmashUI {
         System.out.println(GREEN + "1." + RESET + " Klubformand");
         System.out.println(GREEN + "2." + RESET + " Kasser");
         System.out.println(GREEN + "3." + RESET + " Træner");
-        System.out.println(GREEN + "4." + RESET + " Afslut");
+        System.out.println(GREEN + "0." + RESET + " Afslut");
         System.out.print(YELLOW + "Vælg en mulighed: " + RESET);
     }
 
