@@ -1,16 +1,12 @@
 package FileHandler;
 
 import Member.*;
-import Payment.Payment;
 
 import java.io.*;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.EnumSet;
-
-import static java.lang.Boolean.parseBoolean;
 
 
 public class MemberHandler implements FileHandling<Member,Member>{
@@ -134,8 +130,8 @@ public class MemberHandler implements FileHandling<Member,Member>{
         }
     }
 
-    public Member getMembernameFromId(int id){
-        return memberList.get(id-1);
+    public Member getMemberFromId(int id){
+        return memberList.get(id + 1);
     }
 
 }

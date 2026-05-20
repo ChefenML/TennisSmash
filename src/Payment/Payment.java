@@ -12,7 +12,6 @@ public class Payment implements Comparable<Payment>{
 
 
     public Payment(Member member, boolean hasPaid){
-
         this.member = member;
         this.name = member.getName();
         this.memberId = member.getMemberID();
@@ -44,7 +43,7 @@ public class Payment implements Comparable<Payment>{
         this.memberId = memberId;
     }
 
-    public double getSubscriptionPrice() {
+    public  double getSubscriptionPrice() {
         return member.membersFee();
     }
 
