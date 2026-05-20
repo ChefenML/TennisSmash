@@ -134,4 +134,8 @@ public class MemberHandler implements FileHandling<Member,Member>{
         }
     }
 
+    public Member getMembernameFromId(int id){
+        return memberList.get(id-1);
+    }
+
 }
