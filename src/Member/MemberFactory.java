@@ -2,7 +2,8 @@ package Member;
 import java.util.ArrayList;
 import java.util.List;
 public class MemberFactory {
-ArrayList<Member>Members;
+
+    ArrayList<Member>Members;
 
 
     private List<Member> members;
