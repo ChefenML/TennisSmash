@@ -2,7 +2,7 @@ package Payment;
 
 import Member.Member;
 
-public class Payment {
+public class Payment implements Comparable<Payment>{
 
     private Member member;
     private String name;
@@ -60,6 +60,17 @@ public class Payment {
         this.hasPaid = hasPaid;
     }
         //toString metode til at returnerer hvad medlemmet skal betale baseret på deres membertype og haspaid viser om de har betalt. så hvis haspaid er false skylder de det beløb getSubscriptionPrice() returnerer.
+
+    @Override
+    public int compareTo(Payment other) {
+
+        //Checker om det man vil sammenligne med er null, hvis det er så kaster vi en nullpointer exception.
+        if (other == null){
+            throw new NullPointerException("Kan ikke sammenligne med null");
+        }
+
+        return Double.compare(this.getSubscriptionPrice(), other.getSubscriptionPrice());
+    }
 
         @Override
         public String toString(){
