@@ -54,11 +54,11 @@ public class SmashUI {
 
     private void showRoleMenu(){
         System.out.println("\nLOG IND SOM: ");
-        System.out.println("1. Klubformand");
-        System.out.println("2. Kasser");
-        System.out.println("3. Træner");
-        System.out.println("0. Afslut");
-        System.out.print("Vælg en mulighed: ");
+        System.out.println(GREEN + "1." + RESET + " Klubformand");
+        System.out.println(GREEN + "2." + RESET + " Kasser");
+        System.out.println(GREEN + "3." + RESET + " Træner");
+        System.out.println(GREEN + "4." + RESET + " Afslut");
+        System.out.print(YELLOW + "Vælg en mulighed: " + RESET);
     }
 
 
@@ -116,29 +116,36 @@ public class SmashUI {
     // This is a method to print out a selection of options to the output
     private void showChairmanMenu(){
         System.out.println("\n--- KLUBFORMAND MENU ---");
-        System.out.println("1. Tilføj nyt medlem");
-        System.out.println("2. Vis liste over alle medlemmere");
-        System.out.println("3. Vis liste sorteret");
-        System.out.println("4. Gem ændringer");
-        System.out.println("0. Afslut");
-        System.out.print("Vælg en mulighed: ");
+        System.out.println(GREEN + "1." + RESET + " Tilføj nyt medlem");
+        System.out.println(GREEN + "2." + RESET + " Vis liste over alle medlemmere");
+        System.out.println(GREEN + "3." + RESET + " Vis liste sorteret");
+        System.out.println(GREEN + "4." + RESET + " Gem ændringer");
+        System.out.println(GREEN + "0." + RESET + " Afslut");
+        System.out.print(YELLOW + "Vælg en mulighed: " + RESET);
 
     }
 
     private void showCashierMenu(){
         System.out.println("\n--- KASSER MENU ---");
-        System.out.println("1. Vis forventede indbetalinger efter beløb");
-        System.out.println("0. Afslut");
-        System.out.print("Vælg en mulighed: ");
+        System.out.println(GREEN + "1." + RESET + " Vis forventede indbetalinger efter beløb");
+        System.out.println(GREEN + "0." + RESET + " Afslut");
+        System.out.print(YELLOW + "Vælg en mulighed: " + RESET);
     }
 
     private void showTrainerMenu(){
         System.out.println("\n--- TRÆNER MENU ---");
-        System.out.println("1. Registrer dagens bedste træningsresultat for en spiller");
-        System.out.println("2. Indtast tuneringsresultater");
-        System.out.println("3. Se top 5 ranglister");
-        System.out.println("0. Afslut");
-        System.out.print("Vælg en mulighed: ");
+        System.out.println(GREEN + "1." + RESET + " Registrer dagens bedste træningsresultat for en spiller");
+        System.out.println(GREEN + "2." + RESET + " Indtast tuneringsresultater");
+        System.out.println(GREEN + "3." + RESET + " Se top 5 ranglister");
+        System.out.println(GREEN + "0." + RESET + " Afslut");
+        System.out.print(YELLOW + "Vælg en mulighed: " + RESET);
+    }
+
+    private void sortMembersMenu(){
+        System.out.println("Sorter efter:");
+        System.out.println("1. Navn");
+        System.out.println("2. Alder");
+        System.out.println(YELLOW + "Vælg en mulighed: " + RESET);
     }
 
     // This will be a method for adding a member object to a list
@@ -200,11 +207,8 @@ public class SmashUI {
     }
 
     private void sortMembers(){
-        System.out.println("Sorter efter:");
-        System.out.println("1. Navn");
-        System.out.println("2. Alder");
-        System.out.println("Vælg en mulighed: ");
         int choice = getIntegerInput();
+        sortMembersMenu();
 
         ArrayList<Member> members = fileHandler.load();
 
