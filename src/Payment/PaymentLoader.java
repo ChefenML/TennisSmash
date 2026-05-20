@@ -6,7 +6,7 @@ import Member.*;
 import java.util.ArrayList;
 
 
-public class PaymentLoader {
+public class PaymentLoader implements Comparable<PaymentLoader>{
     private Member actualMember;
     private int memberId;
     private boolean hasPaid;
@@ -22,6 +22,21 @@ public class PaymentLoader {
     public void loadMember(){
         members = memberHandler.load();
         actualMember = members.get(memberId-1);
+    }
+
+    public double getMembersFee() {
+        return actualMember.membersFee();
+    }
+
+    @Override
+    public int compareTo(PaymentLoader other) {
+
+        //Checker om det man vil sammenligne med er null, hvis det er så kaster vi en nullpointer exception.
+        if (other == null){
+            throw new NullPointerException("Kan ikke sammenligne med null");
+        }
+
+        return Double.compare(other.getMembersFee(), actualMember.membersFee());
     }
 
     public String toString(){

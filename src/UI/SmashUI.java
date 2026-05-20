@@ -109,7 +109,8 @@ public class SmashUI {
             int choice = getIntegerInput();
 
             switch (choice){
-                case 1 -> getPaymentList();
+                case 1 -> paymentHandler.getPaymentList();
+                case 2 -> paymentHandler.getSortedPaymentList();
                 case 0 -> running = false;
                 default -> System.out.println(RED + "Fejl. Prøv igen!" + RESET);
             }
@@ -130,7 +131,8 @@ public class SmashUI {
 
     private void showCashierMenu(){
         System.out.println("\n--- KASSER MENU ---");
-        System.out.println(GREEN + "1." + RESET + " Vis forventede indbetalinger efter beløb");
+        System.out.println(GREEN + "1." + RESET + " Vis forventede indbetalinger usorteret");
+        System.out.println(GREEN + "2." + RESET + " Vis forventede indbetalinger sorteret efter beløb");
         System.out.println(GREEN + "0." + RESET + " Afslut");
         System.out.print(YELLOW + "Vælg en mulighed: " + RESET);
     }
@@ -202,11 +204,6 @@ public class SmashUI {
     // This will be a method for showing all members
     private void showAllMembers(){
         fileHandler.showMembers();
-
-    }
-
-    private void getPaymentList(){
-       paymentHandler.getPaymentList();
 
     }
 

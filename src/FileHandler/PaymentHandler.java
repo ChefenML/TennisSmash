@@ -4,6 +4,7 @@ import Member.Member;
 import Payment.*;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import static java.lang.Boolean.parseBoolean;
 
@@ -56,7 +57,7 @@ public class PaymentHandler implements FileHandling<Payment, PaymentLoader>{
                     String name = paymentData[0];
                     int memberID = Integer.parseInt(paymentData[1]);
                     boolean hasPaid = parseBoolean(paymentData[2]);
-                   // int subscriptionPrice = Integer.parseInt(paymentData[3]);
+                    double subscriptionPrice = Double.parseDouble(paymentData[3]);
                 //create Payment
                     newPaymentLoader = new PaymentLoader(memberID, hasPaid);
 //                        p.getMemberID()    + "|" +
@@ -86,5 +87,12 @@ public class PaymentHandler implements FileHandling<Payment, PaymentLoader>{
 
         }
 
+        public void getSortedPaymentList(){
+        Collections.sort(paymentList);
+        for(PaymentLoader p : paymentList){
+            System.out.println(p);
+        }
+
     }
+}
 
