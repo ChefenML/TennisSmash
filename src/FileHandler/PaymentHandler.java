@@ -8,10 +8,15 @@ import java.util.ArrayList;
 import static java.lang.Boolean.parseBoolean;
 
 public class PaymentHandler implements FileHandling<Payment, PaymentLoader>{
+
     private static final String PAYMENTS_FILE = "src/Data/payments.csv";
-    ArrayList<Member> memberList = new ArrayList<>();
-    ArrayList<PaymentLoader> paymentList = new ArrayList<>();
-    MemberHandler filehandler = new MemberHandler();
+    private ArrayList<Member> memberList = new ArrayList<>();
+    private ArrayList<PaymentLoader> paymentList = new ArrayList<>();
+    private MemberHandler filehandler = new MemberHandler();
+
+    public PaymentHandler(){
+        paymentList = load();
+    }
 
     @Override
     public void save(Payment p) {
@@ -30,15 +35,14 @@ public class PaymentHandler implements FileHandling<Payment, PaymentLoader>{
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
+        paymentList.add(new PaymentLoader(p.getMemberId(),p.hasPaid()));
     }
 
 
     @Override
     public ArrayList<PaymentLoader> load() {
 
-            memberList = filehandler.load();
-            PaymentLoader newPaymentLoader = null;
+            PaymentLoader newPaymentLoader;
             String line;
 
             try (BufferedReader reader = new BufferedReader(new FileReader(PAYMENTS_FILE))) {
@@ -73,6 +77,13 @@ public class PaymentHandler implements FileHandling<Payment, PaymentLoader>{
                 throw new RuntimeException(e);
             }
         return paymentList;
+        }
+
+        public void getPaymentList(){
+            for(PaymentLoader p : paymentList){
+                System.out.println(p);
+        }
+
         }
 
     }

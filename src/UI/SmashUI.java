@@ -20,12 +20,14 @@ public class SmashUI {
     private MemberFactory factory;
     private MemberHandler fileHandler;
     private Scanner scanner;
+    private PaymentHandler paymentHandler;
 
     // Creates a constructor to make sure the class has the necessary tools
     public SmashUI() throws IOException {
         this.factory = new MemberFactory();
         this.fileHandler = new MemberHandler();
         this.scanner = new Scanner(System.in);
+        paymentHandler = new PaymentHandler();
     }
 
     // This is the start method used in the app
@@ -183,10 +185,15 @@ public class SmashUI {
         System.out.println("Indtast om brugeren er motionist, konkurrencespiller eller er passivt medlem (vælg én: COMPETITIVE, EXERCISE, PASSIVE): ");
         Exerciser exerciser = Exerciser.valueOf(scanner.nextLine().toUpperCase());
 
+
+        System.out.println("Har ny oprettet medlem betalt? (True / False)");
+        boolean hasPaid = Boolean.parseBoolean(scanner.nextLine().toLowerCase());
+
         Member newMember = new Member(name, memberID, gender, birthYear, birthMonth, birthDayOfMonth, memberType, gameTypes, exerciser);
+        Payment newPayment = new Payment(newMember, hasPaid);
         fileHandler.save(newMember); // kalder save metoden i MemberHandler og sender det nye member med så det gemmes i CSV filen
-
-
+        paymentHandler.save(newPayment); //opretter samtidig betaling og sætter betaling true/false.
+        System.out.println("Ny bruger + " + name + " gemt");
 
 
     }
@@ -198,11 +205,7 @@ public class SmashUI {
     }
 
     private void getPaymentList(){
-        ArrayList<Member> members = fileHandler.load();
-        for (Member m : members) {
-            Payment payment = new Payment(m, false);
-            System.out.println(payment);
-        }
+       paymentHandler.getPaymentList();
 
     }
 

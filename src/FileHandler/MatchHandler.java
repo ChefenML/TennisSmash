@@ -23,7 +23,7 @@ public class MatchHandler {
     public ArrayList<Match> load(){
         String line;
         Match newMatch = null;
-
+        long startTime = System.nanoTime();
 
         try(BufferedReader reader = new BufferedReader(new FileReader(MATCH_FILE))){
             //try with resources, no need to close stuff
@@ -63,6 +63,8 @@ public class MatchHandler {
         catch (IOException e) {
             throw new RuntimeException(e);
         }
+        long endTime = System.nanoTime();
+        System.out.println("Nano sekunder med bufferenreader er: " + (startTime - endTime));
         return matchList;
     }
 
