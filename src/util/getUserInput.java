@@ -1,5 +1,8 @@
 package util;
 
+
+
+import Member.Exerciser;
 import Member.GameTypes;
 
 import java.time.LocalDate;
@@ -7,7 +10,12 @@ import java.time.format.DateTimeFormatter;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+
 import static Member.GameTypes.*;
+
+
+import static Member.Exerciser.*;
+
 
 public class getUserInput {
     Scanner scanner = new Scanner(System.in);
@@ -33,17 +41,32 @@ public class getUserInput {
     }
 
     public GameTypes getGameTypes(){
-        System.out.println("Vælg imellem:" );
-        System.out.println("1: SINGLE 2: DOUBLE 3: MIXED 8: PASSIVE");
+        System.out.println("Vælg Spillerdisciplin imellem:" );
+        System.out.println("1: SINGLE 2: DOUBLE 3: MIXED 4: PASSIVE");
         int choice = getInt();
         GameTypes gameTypes = null;
         switch(choice){
             case 1 -> gameTypes = SINGLE;
             case 2 -> gameTypes = DOUBLE;
             case 3 -> gameTypes = MIXED;
-            case 4 -> gameTypes = PASSIVE;
+            case 4 -> gameTypes = Member.GameTypes.PASSIVE;
+            default -> System.out.println("Kun 1-4 tilladt.");
         }
         return gameTypes;
+    }
+
+        public Exerciser getExerciser(){
+        System.out.println("Vælg Spillertype imellem:" );
+        System.out.println("1: EXERCISE 2: COMPETITIVE 3: PASSIVE");
+        int choice = getInt();
+            Exerciser exerciser = null;
+        switch(choice){
+            case 1 -> exerciser = EXERCISE;
+            case 2 -> exerciser = COMPETITIVE;
+            case 3 -> exerciser = Member.Exerciser.PASSIVE;
+            default -> System.out.println("Kun 1-3 tilladt.");
+        }
+        return exerciser;
     }
 
 }
