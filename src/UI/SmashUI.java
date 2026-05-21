@@ -141,6 +141,7 @@ public class SmashUI {
         System.out.println("\n--- TRÆNER MENU ---");
         System.out.println(GREEN + "1." + RESET + " Registrer dagens bedste træningsresultat for en spiller");
         System.out.println(GREEN + "2." + RESET + " Se top 5 ranglister");
+        System.out.println(GREEN + "3." + RESET + " Gem ændringer");
         System.out.println(GREEN + "0." + RESET + " Afslut");
         System.out.print(YELLOW + "Vælg en mulighed: " + RESET);
     }
@@ -213,6 +214,10 @@ public class SmashUI {
         paymentHandler.save(newPayment); //opretter samtidig betaling og sætter betaling true/false.
         System.out.println("Ny bruger + " + name + " gemt");
 
+
+    }
+
+    private void registerBestResult(){
 
     }
 

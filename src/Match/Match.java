@@ -48,6 +48,10 @@ public class Match {
         return Math.abs(result);
     }
 
+    public GameTypes getGameType(){
+        return gameTypes;
+    }
+
     public String toString(){
         if(this.gameTypes == SINGLE){
             return
