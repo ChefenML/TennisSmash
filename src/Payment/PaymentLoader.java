@@ -28,6 +28,11 @@ public class PaymentLoader implements Comparable<PaymentLoader>{
         return actualMember.membersFee();
     }
 
+    public boolean getPaidStatus() {
+        return hasPaid;
+    }
+
+
     @Override
     public int compareTo(PaymentLoader other) {
 

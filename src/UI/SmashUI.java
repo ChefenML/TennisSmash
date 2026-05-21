@@ -2,7 +2,7 @@ package UI;
 import Member.*;
 import Member.MemberFactory;
 import FileHandler.*;
-import Payment.Payment;
+import Payment.*;
 import Sorting.MemberSorter;
 
 
@@ -111,6 +111,7 @@ public class SmashUI {
             switch (choice){
                 case 1 -> paymentHandler.getPaymentList();
                 case 2 -> paymentHandler.getSortedPaymentList();
+                case 3 -> paymentHandler.getListArrears();
                 case 0 -> running = false;
                 default -> System.out.println(RED + "Fejl. Prøv igen!" + RESET);
             }
@@ -133,6 +134,7 @@ public class SmashUI {
         System.out.println("\n--- KASSER MENU ---");
         System.out.println(GREEN + "1." + RESET + " Vis forventede indbetalinger usorteret");
         System.out.println(GREEN + "2." + RESET + " Vis forventede indbetalinger sorteret efter beløb");
+        System.out.println(GREEN + "3." + RESET + " Vis forventede restance sorteret efter beløb");
         System.out.println(GREEN + "0." + RESET + " Afslut");
         System.out.print(YELLOW + "Vælg en mulighed: " + RESET);
     }

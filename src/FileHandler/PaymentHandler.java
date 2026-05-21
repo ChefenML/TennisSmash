@@ -5,7 +5,10 @@ import Payment.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Scanner;
+import java.util.SortedMap;
 
+import static Member.Colors.*;
 import static java.lang.Boolean.parseBoolean;
 
 public class PaymentHandler implements FileHandling<Payment, PaymentLoader>{
@@ -14,6 +17,7 @@ public class PaymentHandler implements FileHandling<Payment, PaymentLoader>{
     private ArrayList<Member> memberList = new ArrayList<>();
     private ArrayList<PaymentLoader> paymentList = new ArrayList<>();
     private MemberHandler filehandler = new MemberHandler();
+    private Scanner scanner = new Scanner(System.in);
 
     public PaymentHandler(){
         paymentList = load();
@@ -80,19 +84,49 @@ public class PaymentHandler implements FileHandling<Payment, PaymentLoader>{
         return paymentList;
         }
 
-        public void getPaymentList(){
+        public ArrayList<PaymentLoader> getPaymentList(){
+            ArrayList<PaymentLoader> newList = new ArrayList<>();
             for(PaymentLoader p : paymentList){
-                System.out.println(p);
+
+                newList.add(p);
+            }
+            return newList;
         }
 
+        public void getListArrears(){
+            ArrayList<PaymentLoader> paymentList = getPaymentList();
+
+            System.out.println("\n--- UNDERMENU ---");
+
+            System.out.println(GREEN + "1. " + RESET + "Få liste af folk uden restance");
+            System.out.println(GREEN + "2. " + RESET + "Få liste af folk med restance");
+            System.out.print(YELLOW + "Vælg en mulighed: " + RESET);
+
+            int choice = getIntegerInput();
+
+            for (PaymentLoader pay : paymentList){
+                if (!pay.getPaidStatus() & choice == 1){
+                    System.out.println("\n" + pay);
+                } else if (pay.getPaidStatus() & choice == 2) {
+                    System.out.println("\n" + pay);
+                }
+            }
         }
 
         public void getSortedPaymentList(){
         Collections.sort(paymentList);
         for(PaymentLoader p : paymentList){
-            System.out.println(p);
         }
 
+
+    }
+
+    private int getIntegerInput(){
+        try {
+            return Integer.parseInt(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            return -1;
+        }
     }
 }
 
