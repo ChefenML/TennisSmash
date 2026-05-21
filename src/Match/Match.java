@@ -36,6 +36,10 @@ public class Match {
 //        return member.get
 //    }
 
+    public GameTypes getGameType(){
+        return gameTypes;
+    }
+
     public LocalDate getDate(){
         return date;
     }
@@ -47,6 +51,7 @@ public class Match {
     public int getWinSize(){
         return Math.abs(result);
     }
+
 
     public String toString(){
         if(this.gameTypes == SINGLE){
