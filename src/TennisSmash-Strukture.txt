@@ -27,10 +27,10 @@ Tennis Smash
 │   └── PaymentHandler.java             All Paymentdata gets handled here
 │
 ├── ExceptionHandler/
-│   ├── CustomExceptions.java           SuperClass
-│   ├── IOE.java
-│   ├── ILLInput.java
-│   └── AnotherError.java
+│   ├── SmashUIException.java           SuperClass
+│   ├── InputMisMatch.java              InputMisMatch danish dialog
+│   ├── IOException.java                IOException danish dialog
+│   └── NullException.java              NullException danish dialog
 │
 ├── Match/
 │   ├── Match.java                      Super-Class
