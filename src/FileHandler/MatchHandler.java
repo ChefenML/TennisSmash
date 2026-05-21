@@ -14,6 +14,7 @@ public class MatchHandler {
     private static final String MATCH_FILE = "src/Data/match.csv";
 
     private ArrayList<Match> matchList = new ArrayList<>();
+    private ArrayList<Match> customArray = new ArrayList<>();
     MemberHandler memberhandler;
 
     public MatchHandler(){
@@ -93,6 +94,24 @@ public class MatchHandler {
 
         for(Match m : matchList){
             System.out.println(m);
+        }
+    }
+
+    public ArrayList<Match> createTypeArray(GameTypes type){
+
+    for(Match m : matchList){
+        if(m.getGameType() == type){
+            customArray.add(m);
+        }
+    }
+
+    return customArray;
+    }
+
+    public void printTop5(){
+        int i;
+        for(i = 0; i<5; i++){
+            System.out.println(customArray.get(i));
         }
     }
 

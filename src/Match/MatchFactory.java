@@ -29,8 +29,8 @@ public class MatchFactory {
         public List<Match> getMatchesForMember(int memberId) {
             List<Match> result = new ArrayList<>();
             for (Match m : matches) {
-                if (m.member1 == memberId || m.member2 == memberId ||
-                        m.member3 == memberId || m.member4 == memberId) {
+                if (m.getMember1() == memberId || m.getMember2() == memberId ||
+                        m.getMember3() == memberId || m.getMember4() == memberId) {
                     result.add(m);
                 }
             }

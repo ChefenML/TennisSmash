@@ -13,11 +13,12 @@ public class Panel extends JPanel {
     JLabel unchecked,checked;
     JTable userTable;
     JScrollPane scrollPane;
-    ArrayList<Member> memberList;
-    MemberHandler fileHandler;
+    MemberHandler fileHandler = new MemberHandler();
+    ArrayList<Member> memberList = fileHandler.load();;
     Object[][] member2dArray;
 
     public Panel() {
+        //memberList = fileHandler.load();//fillMembers();
         panel = new JPanel();
         this.setPreferredSize(new Dimension(800,600));
 //        this.setLayout(null);
@@ -29,9 +30,9 @@ public class Panel extends JPanel {
 //
 //        //Table stuff
 //
-//        scrollPane = new JScrollPane(userTable);
 
-        Object[] tableNames = {"Navn", "Medlem", "Køn", "Fødselsår", "Fødselsmåned", "Fødselsdag","MedlemsType","Discipliner","PRO/AM"};
+
+        Object[] tableNames = {"Navn", "Medlem", "Køn", "Fødselsår", "Fødselsmåned", "Fødselsdag","MedlemsType","Disciplin","PRO/AM"};
         Object[][] tableData = create2dArray();
 
 
@@ -44,6 +45,10 @@ public class Panel extends JPanel {
         this.add(userTable,BorderLayout.SOUTH);
 
 
+        //Scroller for table
+      //  JScrollPane scroppPane = new JScrollPane(userTable);
+        scrollPane = new JScrollPane(userTable);
+        this.add(scrollPane);
 
         this.setVisible(true);
 
@@ -54,7 +59,8 @@ public class Panel extends JPanel {
     }
 
     public Object[][] create2dArray(){
-       member2dArray = new Object[memberList.size()][9];
+       int arraySize =memberList.size();
+        member2dArray = new Object[arraySize][9];
        int i = 0;
        for(Member m : memberList){
            Object[] b = {m.getName(), m.getMemberID(), m.getGender(), m.getBirthYear(), m.getBirthMonth(), m.birthDayOfMonth(), m.getMemberType(), m.getGameTypes(), m.getExerciser()};
@@ -64,7 +70,7 @@ public class Panel extends JPanel {
         return member2dArray;
     }
 
-    public void fillMembers(){
-        memberList = fileHandler.load();
-    }
+//    public void fillMembers(){
+//        memberList = fileHandler.load();
+//    }
 }
