@@ -1,4 +1,5 @@
 package UI;
+import Match.MatchFactory;
 import Member.*;
 import Member.MemberFactory;
 import FileHandler.*;
@@ -23,6 +24,7 @@ public class SmashUI {
     private Scanner scanner;
     private PaymentHandler paymentHandler;
     private MatchHandler matchHandler;
+    private MatchFactory matchFactory;
 
     // Creates a constructor to make sure the class has the necessary tools
     public SmashUI() throws IOException {
@@ -31,6 +33,7 @@ public class SmashUI {
         this.scanner = new Scanner(System.in);
         paymentHandler = new PaymentHandler();
         matchHandler = new MatchHandler();
+        matchFactory = new MatchFactory();
     }
 
     // This is the start method used in the app
@@ -96,7 +99,8 @@ public class SmashUI {
                 case 1 -> registerBestResult();
                 case 2 -> registerTournamentResult();
                 case 3 -> getTopFive();
-                case 4 -> saveAndExit();
+                case 4 -> createMatch();
+                case 5 -> saveAndExit();
                 case 0 -> running = false;
                 default -> System.out.println(RED + "Fejl. Prøv igen!" + RESET);
             }
@@ -145,7 +149,8 @@ public class SmashUI {
         System.out.println("\n--- TRÆNER MENU ---");
         System.out.println(GREEN + "1." + RESET + " Registrer dagens bedste træningsresultat for en spiller");
         System.out.println(GREEN + "2." + RESET + " Indtast tuneringsresultater");
-        System.out.println(GREEN + "3." + RESET + " Se top 5 ranglister");
+        System.out.println(GREEN + "4." + RESET + " Opret en kamp");
+        System.out.println(GREEN + "5." + RESET + " Se top 5 ranglister");
         System.out.println(GREEN + "0." + RESET + " Afslut");
         System.out.print(YELLOW + "Vælg en mulighed: " + RESET);
     }
@@ -264,7 +269,13 @@ public class SmashUI {
         }
     }
 
+
+    private void createMatch(){
+        matchFactory.createMatch();
+    }
+
     private void registerTournamentResult(){
+
 
     }
 
