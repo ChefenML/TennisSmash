@@ -4,6 +4,7 @@ import Member.Member;
 import Payment.*;
 import Sorting.ArrearsComparator;
 import Sorting.CompareName;
+import Sorting.ComparePaymentName;
 import UI.SmashUI;
 import UI.SmashUI.*;
 
@@ -109,6 +110,7 @@ public class PaymentHandler implements FileHandling<Payment, PaymentLoader>{
 
             System.out.println(GREEN + "1. " + RESET + "Sort by name");
             System.out.println(GREEN + "2. " + RESET + "Sort by price");
+            System.out.println(GREEN + "0." + RESET + " Afslut");
             System.out.print(YELLOW + "Vælg en mulighed: " + RESET);
 
 
@@ -116,11 +118,12 @@ public class PaymentHandler implements FileHandling<Payment, PaymentLoader>{
 
             switch (choice){
                 case 1:{
-                    paymentList.sort(new ArrearsComparator());
+                    paymentList.sort(new ComparePaymentName());
                     System.out.println("\n--- UNDERMENU ---");
 
                     System.out.println(GREEN + "1. " + RESET + "Få liste af folk uden restance");
                     System.out.println(GREEN + "2. " + RESET + "Få liste af folk med restance");
+                    System.out.println(GREEN + "0." + RESET + " Afslut");
                     System.out.print(YELLOW + "Vælg en mulighed: " + RESET);
 
 
@@ -159,6 +162,10 @@ public class PaymentHandler implements FileHandling<Payment, PaymentLoader>{
                         }
 
                     }
+                    break;
+                }
+
+                case 0: {
                     break;
                 }
                     default: {System.out.println(RED + "Fejl. Prøv igen!" + RESET);}

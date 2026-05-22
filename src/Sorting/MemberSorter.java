@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class MemberSorter {
-
     public static void sortByAge(ArrayList<Member> members){
     Collections.sort(members, new CompareAge());
     }

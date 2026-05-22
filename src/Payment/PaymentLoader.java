@@ -35,6 +35,11 @@ public class PaymentLoader implements Comparable<PaymentLoader>{
         return hasPaid;
     }
 
+    public String getPaymentName(){
+        Member member = memberHandler.getMemberFromId(this.memberId);
+        return member.getName();
+    }
+
 
     @Override
     public int compareTo(PaymentLoader other) {
