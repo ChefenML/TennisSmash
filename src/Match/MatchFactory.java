@@ -20,10 +20,12 @@ public class MatchFactory {
         int member2 = 0;
         int member3 = 0;
         int member4 = 0;
-        int result = 0;
+
         GameTypes gameTypes = getUserInput.getGameTypes();
         LocalDate date = getUserInput.getLocalDate();
-        System.out.print("Indtast antal spillere: ");
+        System.out.println("Indtast resultat difference: ");
+        int result = getUserInput.getInt();
+        System.out.println("Indtast antal spillere: ");
         int antalspillere = getUserInput.getInt();
         
         switch(antalspillere){
