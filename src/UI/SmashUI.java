@@ -243,8 +243,8 @@ public class SmashUI {
     }
 
     private void sortMembers(){
-        int choice = getIntegerInput();
         sortMembersMenu();
+        int choice = getIntegerInput();
 
         ArrayList<Member> members = fileHandler.load();
 
