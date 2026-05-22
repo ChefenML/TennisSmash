@@ -43,14 +43,13 @@ public class getUserInput {
 
     public GameTypes getGameTypes(){
         System.out.println("Vælg imellem:" );
-        System.out.println("1: SINGLE 2: DOUBLE 3: MIXED 4: PASSIVE");
+        System.out.println("1: SINGLE 2: DOUBLE 3: MIXED");
         int choice = getInt();
         GameTypes gameTypes = null;
         switch(choice){
             case 1 -> gameTypes = SINGLE;
             case 2 -> gameTypes = DOUBLE;
             case 3 -> gameTypes = MIXED;
-            case 4 -> gameTypes = Member.GameTypes.PASSIVE;
             default -> System.out.println("Kun 1-4 tilladt.");
         }
         return gameTypes;
@@ -63,16 +62,34 @@ public class getUserInput {
 
         public Exerciser getExerciser(){
         System.out.println("Vælg Spillertype imellem:" );
-        System.out.println("1: EXERCISE 2: COMPETITIVE 3: PASSIVE");
+        System.out.println("1: EXERCISE 2: COMPETITIVE");
         int choice = getInt();
             Exerciser exerciser = null;
         switch(choice){
             case 1 -> exerciser = EXERCISE;
             case 2 -> exerciser = COMPETITIVE;
-            case 3 -> exerciser = Member.Exerciser.PASSIVE;
             default -> System.out.println("Kun 1-3 tilladt.");
         }
         return exerciser;
     }
 
+    public String getStringInput(String prompt){
+        try {
+            System.out.println(prompt);
+            return scanner.nextLine();
+        } catch (Exception e) {
+            System.out.println("Ugyldigt input");
+            return getStringInput(prompt);
+        }
+    }
+
+    public int getIntFromString(String prompt) {
+        try {
+            String input = getStringInput(prompt);
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            System.out.println("Ugyldigt tal");
+            return getIntFromString(prompt);
+        }
+    }
 }
