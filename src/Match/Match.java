@@ -73,7 +73,7 @@ public class Match {
         if(this.gameTypes == SINGLE){
             return
                     member1 + "," +
-                            member2 + "," +
+                            member2 + "|" +
                             result + "|" +
                             gameTypes + "|" +
                             date;

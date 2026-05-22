@@ -17,7 +17,7 @@ import static Member.GameTypes.*;
 import static Member.Exerciser.*;
 
 
-public class getUserInput {
+public class GetUserInput {
     Scanner scanner = new Scanner(System.in);
 
     public int getInt(){

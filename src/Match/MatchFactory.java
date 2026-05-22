@@ -2,16 +2,18 @@ package Match;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
+import FileHandler.MatchHandler;
 import Member.*;
-import UI.SmashUI;
-import util.getUserInput;
+import util.GetUserInput;
 
 //
 public class MatchFactory {
 
 
     private List<Match> matches = new ArrayList<>();
-    private getUserInput getUserInput = new getUserInput();
+    private GetUserInput getUserInput = new GetUserInput();
+    private MatchHandler matchHandler = new MatchHandler();
 
     public void createMatch(){
         int member1 = 0;
@@ -47,6 +49,7 @@ public class MatchFactory {
         if(antalspillere <3){
             addSingleMatch(member1,member2,result,date);
             System.out.println("Single kamp tilføjet.");
+
         }else {
             addDoubleMatch(member1,member2,member3,member4,result,gameTypes,date);
             System.out.println("Double kamp tilføjet.");
@@ -55,13 +58,16 @@ public class MatchFactory {
 
         // Opret single-match
         public void addSingleMatch(int member1, int member2, int result, LocalDate date) {
-            matches.add(new Match(member1, member2, result, date));
+            Match createdMatch = new Match(member1, member2, result, date);
+            matches.add(createdMatch);
+            matchHandler.save(createdMatch);
         }
 
         // Opret double/mixed-match
-        public void addDoubleMatch(int member1, int member2, int member3, int member4,
-                                   int result, GameTypes gameTypes, LocalDate date) {
-            matches.add(new Match(member1, member2, member3, member4, result, gameTypes, date));
+        public void addDoubleMatch(int member1, int member2, int member3, int member4, int result, GameTypes gameTypes, LocalDate date) {
+            Match createdMatch = new Match(member1, member2, member3, member4, result, gameTypes, date);
+            matches.add(createdMatch);
+            matchHandler.save(createdMatch);
         }
 
         // Hent alle matches
