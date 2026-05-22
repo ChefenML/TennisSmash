@@ -107,8 +107,8 @@ public class PaymentHandler implements FileHandling<Payment, PaymentLoader>{
         public void getListArrears(){
             System.out.println("\n--- UNDERMENU ---");
 
-            System.out.println(GREEN + "1. " + RESET + "Sort by name");
-            System.out.println(GREEN + "2. " + RESET + "Sort by price");
+            System.out.println(GREEN + "1. " + RESET + "Sorter efter navn");
+            System.out.println(GREEN + "2. " + RESET + "Sorter efter pris");
             System.out.print(YELLOW + "Vælg en mulighed: " + RESET);
 
 
