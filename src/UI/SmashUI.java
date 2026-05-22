@@ -272,6 +272,7 @@ public class SmashUI {
 
     private void createMatch(){
         matchFactory.createMatch();
+        System.out.println(matchFactory.getMatches());
     }
 
     private void registerTournamentResult(){
