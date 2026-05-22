@@ -21,7 +21,7 @@ Tennis Smash
 │   └── MemberFactory.java              Creating Member
 │
 ├── Filehandler/
-│   ├── FileHandler.java                Interface
+│   ├── FileHandling.java               Interface
 │   ├── MatchHandler.java               All Matchdata gets handled here
 │   ├── MemberHandler.java              All Memberdata gets handled here
 │   └── PaymentHandler.java             All Paymentdata gets handled here
@@ -52,17 +52,13 @@ Tennis Smash
 │   └── MemberSorter.java               Collection of all of the above
 │
 ├── Data/
-│   ├── Bank/
-│   │   ├── payments.csv                Outstanding debt data
-│   │   └── member.csv                  Historic member data
-│   │
-│   └── Match/
-│       ├── trainingJunior.csv          Training data: Junior
-│       ├── trainingSenior.csv          Training data: Senior
-│       ├── trainingVeterans.csv        Training data: Veterans
-│       ├── matchJunior.csv             Match data: Junior
-│       ├── matchSenior.csv             Match data: Senior
-│       └── matchVeterans.csv           Match data: Veterans
+│   ├── match.csv                       Match data
+│   ├── members.csv                     Member data
+│   └── payments.csv                    Payments data
+│
+├── util/
+│    ├── CheckFiles.java                Is every file there
+│    └── GetUserInput.java              Collection of functions to get user input
 │
 ├── SmashUI/
 │    ├── GUI.java                       GFX UI or EasterEgg only?

@@ -26,14 +26,20 @@ public class MatchFactory {
         
         switch(antalspillere){
             case 2 -> {
+                System.out.println("Indtast spiller #1 medlem Id:");
                 member1 = getUserInput.getInt();
+                System.out.println("Indtast spiller #2 medlem Id:");
                 member2 = getUserInput.getInt();
             }
             case 4 -> {
                 member1 = getUserInput.getInt();
+                System.out.println("Indtast spiller #1 medlem Id:");
                 member2 = getUserInput.getInt();
+                System.out.println("Indtast spiller #2 medlem Id:");
                 member3 = getUserInput.getInt();
+                System.out.println("Indtast spiller #3 medlem Id:");
                 member4 = getUserInput.getInt();
+                System.out.println("Indtast spiller #4 medlem Id:");
             }
             default -> System.out.println("Kun 2 eller 4 spillere tilladt");
         }
@@ -41,9 +47,10 @@ public class MatchFactory {
         if(antalspillere <3){
             addSingleMatch(member1,member2,result,date);
             System.out.println("Single kamp tilføjet.");
-        }else
+        }else {
             addDoubleMatch(member1,member2,member3,member4,result,gameTypes,date);
             System.out.println("Double kamp tilføjet.");
+        }
     }
 
         // Opret single-match
