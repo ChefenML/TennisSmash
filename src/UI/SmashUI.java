@@ -136,6 +136,7 @@ public class SmashUI {
         System.out.println("\n--- KASSER MENU ---");
         System.out.println(GREEN + "1." + RESET + " Vis forventede indbetalinger usorteret");
         System.out.println(GREEN + "2." + RESET + " Vis forventede indbetalinger sorteret efter beløb");
+        System.out.println(GREEN + "3." + RESET + " Vis forventede restance sorteret efter beløb eller navn");
         System.out.println(GREEN + "0." + RESET + " Afslut");
         System.out.print(YELLOW + "Vælg en mulighed: " + RESET);
     }
