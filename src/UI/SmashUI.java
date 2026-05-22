@@ -2,7 +2,7 @@ package UI;
 import Member.*;
 import Member.MemberFactory;
 import FileHandler.*;
-import Payment.*;
+import Payment.Payment;
 import Sorting.MemberSorter;
 
 
@@ -22,7 +22,6 @@ public class SmashUI {
     private MemberHandler fileHandler;
     private Scanner scanner;
     private PaymentHandler paymentHandler;
-    private MemberHandler memberHandler;
     private MatchHandler matchHandler;
 
     // Creates a constructor to make sure the class has the necessary tools
@@ -31,11 +30,13 @@ public class SmashUI {
         this.fileHandler = new MemberHandler();
         this.scanner = new Scanner(System.in);
         paymentHandler = new PaymentHandler();
+        matchHandler = new MatchHandler();
     }
 
     // This is the start method used in the app
     public void start() {
         boolean running = true;
+
         System.out.println("Velkommen til Smash Management System!"
                 + "\n--------------------------------");
 
@@ -135,7 +136,6 @@ public class SmashUI {
         System.out.println("\n--- KASSER MENU ---");
         System.out.println(GREEN + "1." + RESET + " Vis forventede indbetalinger usorteret");
         System.out.println(GREEN + "2." + RESET + " Vis forventede indbetalinger sorteret efter beløb");
-        System.out.println(GREEN + "3." + RESET + " Vis forventede restance sorteret efter beløb");
         System.out.println(GREEN + "0." + RESET + " Afslut");
         System.out.print(YELLOW + "Vælg en mulighed: " + RESET);
     }
@@ -149,13 +149,28 @@ public class SmashUI {
         System.out.print(YELLOW + "Vælg en mulighed: " + RESET);
     }
 
+    private void getTopFive(){
+        System.out.println(GREEN + "1." + RESET + "Single");
+        System.out.println(GREEN + "2." + RESET + "Double");
+        System.out.println(GREEN + "3." + RESET + "Mixed");
+        System.out.println(YELLOW + "Vælg en mulighed: " + RESET);
+        int choice = getIntegerInput();
+
+        switch (choice){
+            case 1 -> getTopFiveSingle();
+            case 2 -> getTopFiveDouble();
+            case 3 -> getTopFiveMixed();
+            default ->  System.out.println(RED + "Fejl. Prøv igen!" + RESET);
+
+        }
+    }
+
     private void sortMembersMenu(){
         System.out.println("Sorter efter:");
         System.out.println("1. Navn");
         System.out.println("2. Alder");
         System.out.println(YELLOW + "Vælg en mulighed: " + RESET);
     }
-
 
     // This will be a method for adding a member object to a list
     private void addNewMember(){
@@ -205,6 +220,25 @@ public class SmashUI {
 
     }
 
+    private void registerBestResult(){
+
+    }
+
+    private void getTopFiveSingle(){
+        matchHandler.createTypeArray(GameTypes.SINGLE);
+        matchHandler.printTop5();
+    }
+
+    private void getTopFiveDouble(){
+        matchHandler.createTypeArray(GameTypes.DOUBLE);
+        matchHandler.printTop5();
+    }
+
+    private void getTopFiveMixed(){
+        matchHandler.createTypeArray(GameTypes.MIXED);
+        matchHandler.printTop5();
+    }
+
     // This will be a method for showing all members
     private void showAllMembers(){
         fileHandler.showMembers();
@@ -212,6 +246,7 @@ public class SmashUI {
     }
 
     private void sortMembers(){
+        sortMembersMenu();
         int choice = getIntegerInput();
         sortMembersMenu();
 
@@ -228,17 +263,10 @@ public class SmashUI {
         }
     }
 
-    private void registerBestResult(){
-
-    }
-
     private void registerTournamentResult(){
 
     }
 
-    private void getTopFive(){
-
-    }
 
     // This will save and close the program
     private void saveAndExit(){

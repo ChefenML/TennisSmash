@@ -1,11 +1,11 @@
 Tennis Smash
 
 ├──app/
-│      ├── Something?.java
+│      ├── (SmashAppGUI.java)           Might never Happen
 │      └── SmashApp.java                Run
 │
 ├── Colorcoding/
-│   ├── Colors.java                     Colors of the world
+│   ├── Colors.java                     Colors of the world/text
 │   └── Anchiicode.java
 │
 ├── Member/
@@ -21,35 +21,35 @@ Tennis Smash
 │   └── MemberFactory.java              Creating Member
 │
 ├── Filehandler/
-│   ├── FileHandler.java                Filehandler
-│   ├── //StandardDoor.java
-│   ├── //StandardControl.java
-│   └── //StandardFactory.java
+│   ├── FileHandler.java                Interface
+│   ├── MatchHandler.java               All Matchdata gets handled here
+│   ├── MemberHandler.java              All Memberdata gets handled here
+│   └── PaymentHandler.java             All Paymentdata gets handled here
 │
 ├── ExceptionHandler/
-│   ├── CustomExceptions.java           SuperClass
-│   ├── IOE.java
-│   ├── ILLInput.java
-│   └── AnotherError.java
+│   ├── SmashUIException.java           SuperClass
+│   ├── InputMisMatch.java              InputMisMatch danish dialog
+│   ├── IOException.java                IOException danish dialog
+│   └── NullException.java              NullException danish dialog
 │
 ├── Match/
-│   ├── Match.java                      Super
+│   ├── Match.java                      Super-Class
 │   ├── Training.java                   Training
 │   ├── Single.java                     Single Match
 │   ├── Double.java                     Double Match
 │   └── Mix                             Mix Match
 │
 ├── Validators/
-│   ├── Needed?.java                    Stuff might need validation
-│   ├── EmergencyDoor.java
-│   ├── EmergencyControl.java
-│   └── EmergencyFactory.java
+│   ├── DateValidator.java              Date validation
+│   ├── NameValidator.java              Name validation
+│   ├── MatchResultValidator.java       Match validation
+│   └── OtherStuffValidator.java        Stuff might need validation
 │
 ├── Sorting/                            Sort stuff
-│   ├── Comparator.java
-│   ├── Comparable.java
-│   ├── somethingelse.java
-│   └── Evenmorenothing.java
+│   ├── CompareAge.java                 Sorting by age
+│   ├── CompareMemberId.java            Sorting by memberID
+│   ├── CompareName.java                Sorting by name
+│   └── MemberSorter.java               Collection of all of the above
 │
 ├── Data/
 │   ├── Bank/
@@ -64,13 +64,11 @@ Tennis Smash
 │       ├── matchSenior.csv             Match data: Senior
 │       └── matchVeterans.csv           Match data: Veterans
 │
-├── UnitTest/
-│   ├── MemberTest.java                 Test stuff
-│   ├── TestOnTest.java                 Test Goes Here
-│   └── RememberStuffTest.csv           Historic member data
+├── SmashUI/
+│    ├── GUI.java                       GFX UI or EasterEgg only?
+│    └── Console.java                   Default Console view
 │
-│
-│
-└── SmashUI/
-    ├── GUI.java                        GFX UI?
-    └── Console.java                    Console UI
+└── UnitTest/
+    ├── MemberTest.java                 Test stuff
+    ├── TestOnTest.java                 Test Goes Here
+    └── RememberStuffTest.csv           Historic member data
