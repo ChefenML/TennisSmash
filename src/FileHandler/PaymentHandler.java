@@ -119,8 +119,8 @@ public class PaymentHandler implements FileHandling<Payment, PaymentLoader>{
                     paymentList.sort(new ArrearsComparator());
                     System.out.println("\n--- UNDERMENU ---");
 
-                    System.out.println(GREEN + "1. " + RESET + "Få liste af folk uden restance");
-                    System.out.println(GREEN + "2. " + RESET + "Få liste af folk med restance");
+                    System.out.println(GREEN + "1. " + RESET + "Få liste af medlemmer i restance");
+                    System.out.println(GREEN + "2. " + RESET + "Få liste af medlemmer der ikke er i restance");
                     System.out.print(YELLOW + "Vælg en mulighed: " + RESET);
 
 
@@ -139,8 +139,8 @@ public class PaymentHandler implements FileHandling<Payment, PaymentLoader>{
                     paymentList.sort(new ArrearsComparator());
                     System.out.println("\n--- UNDERMENU ---");
 
-                    System.out.println(GREEN + "1. " + RESET + "Få liste af folk uden restance");
-                    System.out.println(GREEN + "2. " + RESET + "Få liste af folk med restance");
+                    System.out.println(GREEN + "1. " + RESET + "Få liste af medlemmer i restance");
+                    System.out.println(GREEN + "2. " + RESET + "Få liste af medlemmer der ikke er i restance");
                     System.out.println(GREEN + "0." + RESET + " Afslut");
                     System.out.print(YELLOW + "Vælg en mulighed: " + RESET);
 
