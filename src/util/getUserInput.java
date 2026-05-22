@@ -18,6 +18,7 @@ public class getUserInput {
         } catch (NumberFormatException e) {
             return -1;
         }
+
     }
 
     public LocalDate getLocalDate(){
@@ -34,7 +35,7 @@ public class getUserInput {
 
     public GameTypes getGameTypes(){
         System.out.println("Vælg imellem:" );
-        System.out.println("1: SINGLE 2: DOUBLE 3: MIXED 8: PASSIVE");
+        System.out.println("1: SINGLE 2: DOUBLE 3: MIXED 4: PASSIVE");
         int choice = getInt();
         GameTypes gameTypes = null;
         switch(choice){
@@ -44,6 +45,11 @@ public class getUserInput {
             case 4 -> gameTypes = PASSIVE;
         }
         return gameTypes;
+    }
+    //giver dette nogensinde problemer uden Datetimeformatter her modsat anden funktion?
+    public LocalDate getTodaysDate(){
+        LocalDate date = LocalDate.now();
+        return date;
     }
 
 }
