@@ -94,8 +94,9 @@ public class SmashUI {
 
             switch (choice){
                 case 1 -> registerBestResult();
-                case 2 -> getTopFive(); //her skal rettes
-                case 3 -> saveAndExit();
+                case 2 -> registerTournamentResult();
+                case 3 -> getTopFive();
+                case 4 -> saveAndExit();
                 case 0 -> running = false;
                 default -> System.out.println(RED + "Fejl. Prøv igen!" + RESET);
             }
@@ -104,6 +105,7 @@ public class SmashUI {
 
     private void isCashier(){
         boolean running = true;
+
         while (running) {
             showCashierMenu();
             int choice = getIntegerInput();
@@ -111,6 +113,7 @@ public class SmashUI {
             switch (choice){
                 case 1 -> paymentHandler.getPaymentList();
                 case 2 -> paymentHandler.getSortedPaymentList();
+                case 3 -> paymentHandler.getListArrears();
                 case 0 -> running = false;
                 default -> System.out.println(RED + "Fejl. Prøv igen!" + RESET);
             }
@@ -133,6 +136,7 @@ public class SmashUI {
         System.out.println("\n--- KASSER MENU ---");
         System.out.println(GREEN + "1." + RESET + " Vis forventede indbetalinger usorteret");
         System.out.println(GREEN + "2." + RESET + " Vis forventede indbetalinger sorteret efter beløb");
+        System.out.println(GREEN + "3." + RESET + " Vis forventede restance sorteret efter beløb eller navn");
         System.out.println(GREEN + "0." + RESET + " Afslut");
         System.out.print(YELLOW + "Vælg en mulighed: " + RESET);
     }
@@ -140,8 +144,8 @@ public class SmashUI {
     private void showTrainerMenu(){
         System.out.println("\n--- TRÆNER MENU ---");
         System.out.println(GREEN + "1." + RESET + " Registrer dagens bedste træningsresultat for en spiller");
-        System.out.println(GREEN + "2." + RESET + " Se top 5 ranglister");
-        System.out.println(GREEN + "3." + RESET + " Gem ændringer");
+        System.out.println(GREEN + "2." + RESET + " Indtast tuneringsresultater");
+        System.out.println(GREEN + "3." + RESET + " Se top 5 ranglister");
         System.out.println(GREEN + "0." + RESET + " Afslut");
         System.out.print(YELLOW + "Vælg en mulighed: " + RESET);
     }
@@ -245,6 +249,7 @@ public class SmashUI {
     private void sortMembers(){
         sortMembersMenu();
         int choice = getIntegerInput();
+        sortMembersMenu();
 
         ArrayList<Member> members = fileHandler.load();
 
@@ -258,6 +263,11 @@ public class SmashUI {
             System.out.println(m);
         }
     }
+
+    private void registerTournamentResult(){
+
+    }
+
 
     // This will save and close the program
     private void saveAndExit(){
