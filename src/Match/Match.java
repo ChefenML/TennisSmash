@@ -6,7 +6,7 @@ import java.time.LocalDate;
 
 import static Member.GameTypes.SINGLE;
 
-public class Match {
+public class Match implements Comparable<Match> {
     private int member1, member2, member3, member4;
     private int result;
     private GameTypes gameTypes;
@@ -87,5 +87,10 @@ public class Match {
                         result + "|" +
                         gameTypes + "|" +
                         date;
+    }
+//added
+    @Override
+    public int compareTo(Match o) {
+        return Integer.compare(this.getResult(),o.getResult());
     }
 }
