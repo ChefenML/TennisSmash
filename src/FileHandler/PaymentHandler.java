@@ -4,6 +4,7 @@ import Member.Member;
 import Payment.*;
 import Sorting.ArrearsComparator;
 import Sorting.CompareName;
+import Sorting.ComparePaymentName;
 import UI.SmashUI;
 import UI.SmashUI.*;
 
@@ -116,7 +117,7 @@ public class PaymentHandler implements FileHandling<Payment, PaymentLoader>{
 
             switch (choice){
                 case 1:{
-                    paymentList.sort(new ArrearsComparator());
+                    paymentList.sort(new ComparePaymentName());
                     System.out.println("\n--- UNDERMENU ---");
 
                     System.out.println(GREEN + "1. " + RESET + "Få liste af medlemmer i restance");
@@ -159,6 +160,10 @@ public class PaymentHandler implements FileHandling<Payment, PaymentLoader>{
                         }
 
                     }
+                    break;
+                }
+
+                case 0: {
                     break;
                 }
                     default: {System.out.println(RED + "Fejl. Prøv igen!" + RESET);}

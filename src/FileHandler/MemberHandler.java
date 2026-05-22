@@ -131,7 +131,7 @@ public class MemberHandler implements FileHandling<Member,Member>{
     }
 
     public Member getMemberFromId(int id){
-        return memberList.get(id + 1);
+        return memberList.get(id-1);
     }
 
 }
