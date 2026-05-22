@@ -22,6 +22,8 @@ public class SmashUI {
     private MemberHandler fileHandler;
     private Scanner scanner;
     private PaymentHandler paymentHandler;
+    private MemberHandler memberHandler;
+    private MatchHandler matchHandler;
 
     // Creates a constructor to make sure the class has the necessary tools
     public SmashUI() throws IOException {
@@ -34,7 +36,6 @@ public class SmashUI {
     // This is the start method used in the app
     public void start() {
         boolean running = true;
-
         System.out.println("Velkommen til Smash Management System!"
                 + "\n--------------------------------");
 
@@ -154,6 +155,7 @@ public class SmashUI {
         System.out.println("2. Alder");
         System.out.println(YELLOW + "Vælg en mulighed: " + RESET);
     }
+
 
     // This will be a method for adding a member object to a list
     private void addNewMember(){

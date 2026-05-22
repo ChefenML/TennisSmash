@@ -2,7 +2,13 @@ package FileHandler;
 
 import Member.Member;
 import Payment.*;
+import Sorting.ArrearsComparator;
+import Sorting.CompareName;
+import UI.SmashUI;
+import UI.SmashUI.*;
+
 import java.io.*;
+import java.text.CollationElementIterator;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
@@ -84,42 +90,84 @@ public class PaymentHandler implements FileHandling<Payment, PaymentLoader>{
         return paymentList;
         }
 
-        public ArrayList<PaymentLoader> getPaymentList(){
-            ArrayList<PaymentLoader> newList = new ArrayList<>();
+        public void getPaymentList(){
             for(PaymentLoader p : paymentList){
-
-                newList.add(p);
-            }
-            return newList;
-        }
-
-        public void getListArrears(){
-            ArrayList<PaymentLoader> paymentList = getPaymentList();
-
-            System.out.println("\n--- UNDERMENU ---");
-
-            System.out.println(GREEN + "1. " + RESET + "Få liste af folk uden restance");
-            System.out.println(GREEN + "2. " + RESET + "Få liste af folk med restance");
-            System.out.print(YELLOW + "Vælg en mulighed: " + RESET);
-
-            int choice = getIntegerInput();
-
-            for (PaymentLoader pay : paymentList){
-                if (!pay.getPaidStatus() & choice == 1){
-                    System.out.println("\n" + pay);
-                } else if (pay.getPaidStatus() & choice == 2) {
-                    System.out.println("\n" + pay);
-                }
+                System.out.println(p);
             }
         }
 
         public void getSortedPaymentList(){
-        Collections.sort(paymentList);
-        for(PaymentLoader p : paymentList){
+            Collections.sort(paymentList);
+
+            for(PaymentLoader p : paymentList){
+                System.out.println(p);
+            }
         }
 
+        public void getListArrears(){
 
-    }
+
+            System.out.println("\n--- UNDERMENU ---");
+
+            System.out.println(GREEN + "1. " + RESET + "Sort by name");
+            System.out.println(GREEN + "2. " + RESET + "Sort by price");
+            System.out.print(YELLOW + "Vælg en mulighed: " + RESET);
+
+
+            int choice = getIntegerInput();
+
+            switch (choice){
+                case 1:{
+                    paymentList.sort(new ArrearsComparator());
+                    System.out.println("\n--- UNDERMENU ---");
+
+                    System.out.println(GREEN + "1. " + RESET + "Få liste af folk uden restance");
+                    System.out.println(GREEN + "2. " + RESET + "Få liste af folk med restance");
+                    System.out.print(YELLOW + "Vælg en mulighed: " + RESET);
+
+
+                    int numInput = getIntegerInput();
+
+                    for (PaymentLoader pay : paymentList){
+                        if (!pay.getPaidStatus() && numInput == 1){
+                            System.out.println("\n" + pay);
+                        } else if (pay.getPaidStatus() && numInput == 2) {
+                            System.out.println("\n" + pay);
+                        }
+                    }
+                }
+
+                case 2: {
+                    paymentList.sort(new ArrearsComparator());
+                    System.out.println("\n--- UNDERMENU ---");
+
+                    System.out.println(GREEN + "1. " + RESET + "Få liste af folk uden restance");
+                    System.out.println(GREEN + "2. " + RESET + "Få liste af folk med restance");
+                    System.out.println(GREEN + "0." + RESET + " Afslut");
+                    System.out.print(YELLOW + "Vælg en mulighed: " + RESET);
+
+
+                    int numInput = getIntegerInput();
+
+                    if (numInput == 0) {
+                        break;
+                    }
+
+                    for (PaymentLoader pay : paymentList) {
+                        if (!pay.getPaidStatus() && numInput == 1) {
+                            System.out.println("\n" + pay);
+                        } else if (pay.getPaidStatus() && numInput == 2) {
+                            System.out.println("\n" + pay);
+                        }
+
+                    }
+                    break;
+                }
+                    default: {System.out.println(RED + "Fejl. Prøv igen!" + RESET);}
+            }
+
+        }
+
 
     private int getIntegerInput(){
         try {

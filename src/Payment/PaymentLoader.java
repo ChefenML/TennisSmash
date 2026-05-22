@@ -2,6 +2,7 @@ package Payment;
 
 import FileHandler.*;
 import Member.*;
+import Payment.*;
 
 import java.util.ArrayList;
 
@@ -12,12 +13,14 @@ public class PaymentLoader implements Comparable<PaymentLoader>{
     private boolean hasPaid;
     private MemberHandler memberHandler;
     private ArrayList<Member> members;
+    private ArrayList<PaymentLoader> payments;
 
     public PaymentLoader(int memberId, boolean hasPaid){
 
         this.memberId = memberId;
         this.hasPaid = hasPaid;
         this.memberHandler = new MemberHandler();
+
     }
     public void loadMember(){
         members = memberHandler.load();
@@ -25,7 +28,7 @@ public class PaymentLoader implements Comparable<PaymentLoader>{
     }
 
     public double getMembersFee() {
-        return actualMember.membersFee();
+        return (actualMember != null) ? actualMember.membersFee() : 0.0;
     }
 
     public boolean getPaidStatus() {
@@ -41,12 +44,12 @@ public class PaymentLoader implements Comparable<PaymentLoader>{
             throw new NullPointerException("Kan ikke sammenligne med null");
         }
 
-        return Double.compare(other.getMembersFee(), actualMember.membersFee());
+        return Double.compare(other.getMembersFee(), this.getMembersFee());
     }
 
     public String toString(){
         loadMember();
-        return actualMember.getName() + " Medlem: " + memberId + " Betalt: " + hasPaid + " Beløb: " + actualMember.membersFee();
+        return actualMember.getName() + " Medlem: " + memberId + " Betalt: " + hasPaid + " Beløb: " + this.getMembersFee();
     }
 
 }
