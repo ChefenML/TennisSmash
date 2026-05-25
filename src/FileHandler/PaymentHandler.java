@@ -5,6 +5,7 @@ import Payment.*;
 import Sorting.ArrearsComparator;
 import Sorting.CompareName;
 import Sorting.ComparePaymentName;
+import Sorting.MemberSorter;
 import UI.SmashUI;
 import UI.SmashUI.*;
 
@@ -98,7 +99,7 @@ public class PaymentHandler implements FileHandling<Payment, PaymentLoader>{
         }
 
         public void getSortedPaymentList(){
-            Collections.sort(paymentList);
+            MemberSorter.sortByFee(paymentList);
 
             for(PaymentLoader p : paymentList){
                 System.out.println(p);

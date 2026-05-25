@@ -52,6 +52,11 @@ Tennis Smash Package Strukture
 │    ├── GUI.java                       GFX UI or EasterEgg only?
 │    └── Console.java                   Default Console view
 │
+├── SwingTest/
+│    ├── Frame.java                     Test Frame
+│    ├── Panel.java                     Test Panel
+│    └── TennisPanel.java               Test of JPanel JText JTable etc.
+│
 └── Test/
     ├── MemberTest.java                 Member Test here
     ├── MemberHandlerTest.java          MemberHandler Test here

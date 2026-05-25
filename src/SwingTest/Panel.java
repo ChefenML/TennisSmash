@@ -37,17 +37,19 @@ public class Panel extends JPanel {
 
 
         userTable = new JTable(tableData,tableNames);
+       // userTable.setSize(700,500);
 //        userTable.getTableHeader().setBounds(50,30,700,20);
 //        userTable.setBounds(50,50,700,200);
 
 
-        this.add(userTable.getTableHeader(),BorderLayout.NORTH);
-        this.add(userTable,BorderLayout.SOUTH);
+        this.add(userTable.getTableHeader(),null);
+        this.add(userTable,null);
 
 
         //Scroller for table
       //  JScrollPane scroppPane = new JScrollPane(userTable);
         scrollPane = new JScrollPane(userTable);
+        //scrollPane.setSize(25,25);
         this.add(scrollPane);
 
         this.setVisible(true);
@@ -60,7 +62,10 @@ public class Panel extends JPanel {
 
     public Object[][] create2dArray(){
        int arraySize =memberList.size();
-        member2dArray = new Object[arraySize][9];
+       int arrayheight = Member.class.getDeclaredFields().length;
+        System.out.println(arrayheight);
+
+       member2dArray = new Object[arraySize][arrayheight];
        int i = 0;
        for(Member m : memberList){
            Object[] b = {m.getName(), m.getMemberID(), m.getGender(), m.getBirthYear(), m.getBirthMonth(), m.birthDayOfMonth(), m.getMemberType(), m.getGameTypes(), m.getExerciser()};

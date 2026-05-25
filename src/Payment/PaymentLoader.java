@@ -41,6 +41,10 @@ public class PaymentLoader implements Comparable<PaymentLoader>{
     }
 
 
+    public boolean hasPaid(){
+        return hasPaid;
+    }
+
     @Override
     public int compareTo(PaymentLoader other) {
 

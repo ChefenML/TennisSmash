@@ -100,7 +100,7 @@ public class MatchHandler {
         }
     }
 
-    public ArrayList<Match> createTypeArray(GameTypes type){
+    public void createTypeArray(GameTypes type){
 
     for(Match m : matchList){
         if(m.getGameType() == type){
@@ -108,13 +108,13 @@ public class MatchHandler {
         }
     }
 
-    return customArray;
+    printTop5(customArray);
     }
 
-    public void printTop5(){
-        Collections.sort(matchList);//added
+    public void printTop5(ArrayList<Match> list){
+        Collections.sort(list);//added
         int i;
-        for(i = 0; i<5; i++){
+        for(i = 0; i<list.size(); i++){
             System.out.println(customArray.get(i));
         }
     }
