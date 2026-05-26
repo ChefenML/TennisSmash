@@ -134,6 +134,12 @@ public class MemberHandler implements FileHandling<Member,Member>{
         }
     }
 
+    public void isMemberLoaded(){
+        if(memberList.isEmpty()){
+            memberList = load();
+        }
+    }
+
     public Member getMemberFromId(int id){
         if(memberList.isEmpty()){
             memberList = load();
