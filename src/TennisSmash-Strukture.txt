@@ -53,9 +53,15 @@ Tennis Smash Package Strukture
 │    └── Console.java                   Default Console view
 │
 ├── SwingTest/
+│    ├── cille.png                      Cille EasterEggHead
+│    ├── demi.png                       Demi EasterEggHead
+│    ├── EasterEggFrame.java            EasterEggHeads Frame
+│    ├── EasterEggPanel.java            EasterEggHeads Panel
 │    ├── Frame.java                     Test Frame
+│    ├── mikkel.png                     Mikkel EasterEggHead
+│    ├── oliver.png                     Oliver EasterEggHead
 │    ├── Panel.java                     Test Panel
-│    └── TennisPanel.java               Test of JPanel JText JTable etc.
+│    └── TennisPanel.java               Test of JPanel JText JTable JComboBox
 │
 └── Test/
     ├── MemberTest.java                 Member Test here
