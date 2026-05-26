@@ -18,7 +18,7 @@ public class MemberHandler implements FileHandling<Member,Member>{
 
 
     public MemberHandler(){
-        //memberList = load();
+       // memberList = load();
     }
 
     public ArrayList<Member> load(){
@@ -126,17 +126,25 @@ public class MemberHandler implements FileHandling<Member,Member>{
     }
 
     public void showMembers(){
-
+        if(memberList.isEmpty()){
+            memberList = load();
+        }
         for(Member m : memberList){
             System.out.println(m);
         }
     }
 
     public Member getMemberFromId(int id){
+        if(memberList.isEmpty()){
+            memberList = load();
+        }
         return memberList.get(id-1);
     }
 
     public void sortMemberByName(){
+        if(memberList.isEmpty()){
+            memberList = load();
+        }
         MemberSorter.sortByName(memberList);
         for(Member m : memberList){
             System.out.println(m);
@@ -144,6 +152,9 @@ public class MemberHandler implements FileHandling<Member,Member>{
     }
 
     public void sortMemberByAge(){
+        if(memberList.isEmpty()){
+            memberList = load();
+        }
         MemberSorter.sortByAge(memberList);
         for(Member m : memberList){
             System.out.println(m);
