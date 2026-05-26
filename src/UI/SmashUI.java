@@ -199,10 +199,10 @@ public class SmashUI {
         System.out.println("Indtast fødselsåret (Eks. 1998 eller 2005): ");
         int birthYear = Integer.parseInt(scanner.nextLine());
 
-        System.out.println("Indtast fødselsmåned (Eks. 3 eller 11: ");
+        System.out.println("Indtast fødselsmåned (Eks. 3 eller 11): ");
         int birthMonth = Integer.parseInt(scanner.nextLine());
 
-        System.out.println("Indtast dagen medlemmet er født (Eks 2 eller 20: ");
+        System.out.println("Indtast dagen medlemmet er født (Eks 2 eller 20: )");
         int birthDayOfMonth = Integer.parseInt(scanner.nextLine());
 
         System.out.println("Indtast medlemstype (vælg én: JUNIOR, SENIOR, VETERAN): ");
