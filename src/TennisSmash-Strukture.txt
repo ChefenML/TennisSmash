@@ -1,24 +1,15 @@
-Tennis Smash
+Tennis Smash Package Strukture
 
 ├──app/
-│      ├── (SmashAppGUI.java)           Might never Happen
-│      └── SmashApp.java                Run
-│
-├── Colorcoding/
-│   ├── Colors.java                     Colors of the world/text
-│   └── Anchiicode.java
+│   └── SmashApp.java                   Run
 │
 ├── Member/
-│   ├── Members.java                    SuperClass: memberFee()
-│   ├── Junior.java                     Kids <18
-│   ├── Senior.java                     Adults 18<x<60
-│   ├── Veteran.java                    Veterans 60+
-│   ├── Passive.java                    Passive: Support club without playing
-│   ├── Active.java                     Active: ParentClass of Junior,Senior & Veteran
-│   ├── SmashFee.java                   <Interface> Fee's
+│   ├── Member.java                     All Member data in this class
+│   ├── Colors.java                     Enum: Misplaced Colors enum
+│   ├── MemberType.java                 Enum: Type of members: Junior,Senior,Veteran,Passive
 │   ├── Exerciser.java                  Enum: Plays for fun or competitive
 │   ├── GameTypes.java                  Enum: Plays Single, Double & Mixed
-│   └── MemberFactory.java              Creating Member
+│   └── MemberFactory.java              Create Member
 │
 ├── Filehandler/
 │   ├── FileHandling.java               Interface
@@ -33,19 +24,16 @@ Tennis Smash
 │   └── NullException.java              NullException danish dialog
 │
 ├── Match/
-│   ├── Match.java                      Super-Class
-│   ├── Training.java                   Training
-│   ├── Single.java                     Single Match
-│   ├── Double.java                     Double Match
-│   └── Mix                             Mix Match
+│   ├── Match.java                      Match Class
+│   └── MatchFactory.java               Create Match
 │
 ├── Validators/
-│   ├── DateValidator.java              Date validation
+│   ├── LocalDateValidator.java         Date validation
 │   ├── NameValidator.java              Name validation
-│   ├── MatchResultValidator.java       Match validation
-│   └── OtherStuffValidator.java        Stuff might need validation
+│   └── ValiTester.java                 Test of Validation
 │
 ├── Sorting/                            Sort stuff
+│   ├── ArrearsComparator.java          Sorting by paid status & size of payment
 │   ├── CompareAge.java                 Sorting by age
 │   ├── CompareMemberId.java            Sorting by memberID
 │   ├── CompareName.java                Sorting by name
@@ -64,7 +52,12 @@ Tennis Smash
 │    ├── GUI.java                       GFX UI or EasterEgg only?
 │    └── Console.java                   Default Console view
 │
-└── UnitTest/
-    ├── MemberTest.java                 Test stuff
-    ├── TestOnTest.java                 Test Goes Here
-    └── RememberStuffTest.csv           Historic member data
+├── SwingTest/
+│    ├── Frame.java                     Test Frame
+│    ├── Panel.java                     Test Panel
+│    └── TennisPanel.java               Test of JPanel JText JTable etc.
+│
+└── Test/
+    ├── MemberTest.java                 Member Test here
+    ├── MemberHandlerTest.java          MemberHandler Test here
+    └── PaymentHandlerTest.csv          HandlerTest Test here

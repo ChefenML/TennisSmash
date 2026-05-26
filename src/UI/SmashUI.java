@@ -5,7 +5,8 @@ import Member.MemberFactory;
 import FileHandler.*;
 import Payment.Payment;
 import Sorting.MemberSorter;
-
+import Exception.*;
+import SwingTest.EasterEggFrame;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -27,11 +28,11 @@ public class SmashUI {
     private MatchFactory matchFactory;
 
     // Creates a constructor to make sure the class has the necessary tools
-    public SmashUI() throws IOException {
+    public SmashUI() throws SmashUIException {
         this.factory = new MemberFactory();
         this.fileHandler = new MemberHandler();
         this.scanner = new Scanner(System.in);
-        paymentHandler = new PaymentHandler();
+        this.paymentHandler = new PaymentHandler();
         matchHandler = new MatchHandler();
         matchFactory = new MatchFactory();
     }
@@ -51,6 +52,7 @@ public class SmashUI {
                 case 1 -> isChairman();
                 case 2 -> isCashier();
                 case 3 -> isTrainer();
+                case 666 -> new EasterEggFrame();
                 case 0 -> running = false;
                 default ->  System.out.println(RED + "Fejl. Prøv igen!" + RESET);
             }
@@ -82,6 +84,8 @@ public class SmashUI {
                 case 2 -> showAllMembers();
                 case 3 -> sortMembers();
                 case 4 -> saveAndExit();
+                case 5 -> fileHandler.sortMemberByName();
+                case 6 -> fileHandler.sortMemberByAge();
                 case 0 -> running = false;
                 default -> System.out.println(RED + "Fejl. Prøv igen!" + RESET);
             }
@@ -98,9 +102,9 @@ public class SmashUI {
             switch (choice){
                 case 1 -> registerBestResult();
                 case 2 -> registerTournamentResult();
-                case 3 -> getTopFive();
+                case 3 -> matchHandler.showMatches();
                 case 4 -> createMatch();
-                case 5 -> saveAndExit();
+                case 5 -> matchHandler.createTypeArray(SINGLE);
                 case 0 -> running = false;
                 default -> System.out.println(RED + "Fejl. Prøv igen!" + RESET);
             }
@@ -108,6 +112,7 @@ public class SmashUI {
     }
 
     private void isCashier(){
+        //paymentHandler.load();
         boolean running = true;
 
         while (running) {
@@ -232,17 +237,17 @@ public class SmashUI {
 
     private void getTopFiveSingle(){
         matchHandler.createTypeArray(GameTypes.SINGLE);
-        matchHandler.printTop5();
+       // matchHandler.printTop5();
     }
 
     private void getTopFiveDouble(){
         matchHandler.createTypeArray(GameTypes.DOUBLE);
-        matchHandler.printTop5();
+       // matchHandler.printTop5();
     }
 
     private void getTopFiveMixed(){
         matchHandler.createTypeArray(GameTypes.MIXED);
-        matchHandler.printTop5();
+       // matchHandler.printTop5();
     }
 
     // This will be a method for showing all members
@@ -259,13 +264,9 @@ public class SmashUI {
         ArrayList<Member> members = fileHandler.load();
 
         if (choice == 1) {
-            MemberSorter.sortByName(members);
+            fileHandler.sortMemberByName();
         } else if (choice == 2) {
-            MemberSorter.sortByAge(members);
-        }
-
-        for (Member m : members) {
-            System.out.println(m);
+            fileHandler.sortMemberByAge();
         }
     }
 

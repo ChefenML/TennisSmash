@@ -1,11 +1,13 @@
 package FileHandler;
 
 import Member.*;
+import Sorting.MemberSorter;
 
 import java.io.*;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.EnumSet;
 
 
@@ -16,7 +18,7 @@ public class MemberHandler implements FileHandling<Member,Member>{
 
 
     public MemberHandler(){
-        memberList = load();
+        //memberList = load();
     }
 
     public ArrayList<Member> load(){
@@ -132,6 +134,20 @@ public class MemberHandler implements FileHandling<Member,Member>{
 
     public Member getMemberFromId(int id){
         return memberList.get(id-1);
+    }
+
+    public void sortMemberByName(){
+        MemberSorter.sortByName(memberList);
+        for(Member m : memberList){
+            System.out.println(m);
+        }
+    }
+
+    public void sortMemberByAge(){
+        MemberSorter.sortByAge(memberList);
+        for(Member m : memberList){
+            System.out.println(m);
+        }
     }
 
 }
