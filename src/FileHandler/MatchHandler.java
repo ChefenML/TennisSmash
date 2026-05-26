@@ -25,7 +25,7 @@ public class MatchHandler {
     public ArrayList<Match> load(){
         String line;
         Match newMatch = null;
-        long startTime = System.nanoTime();
+       // long startTime = System.currentTimeMillis();
 
         try(BufferedReader reader = new BufferedReader(new FileReader(MATCH_FILE))){
             //try with resources, no need to close stuff
@@ -65,17 +65,17 @@ public class MatchHandler {
         catch (IOException e) {
             throw new RuntimeException(e);
         }
-        long endTime = System.nanoTime();
-        long duration = (endTime-startTime);
-        long durationsec = duration/1000000000;
-        //System.out.println("Nano sekunder med bufferenreader er: " + duration);
+//        long endTime = System.currentTimeMillis();
+//        long duration = (endTime-startTime);
+//
+//        System.out.println("MiliSekunder med bufferenreader er: " + duration);
         return matchList;
     }
 
     public void save(Match match) {
 
 
-        try(PrintWriter writer = new PrintWriter(new FileWriter(MATCH_FILE,true))){
+        try(PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(MATCH_FILE,true)))){
 
 
 

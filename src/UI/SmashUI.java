@@ -226,7 +226,7 @@ public class SmashUI {
         Payment newPayment = new Payment(newMember, hasPaid);
         fileHandler.save(newMember); // kalder save metoden i MemberHandler og sender det nye member med så det gemmes i CSV filen
         paymentHandler.save(newPayment); //opretter samtidig betaling og sætter betaling true/false.
-        System.out.println("Ny bruger + " + name + " gemt");
+        System.out.println("Ny bruger: " + name + " gemt");
 
 
     }
@@ -260,8 +260,6 @@ public class SmashUI {
         sortMembersMenu();
         int choice = getIntegerInput();
         sortMembersMenu();
-
-        ArrayList<Member> members = fileHandler.load();
 
         if (choice == 1) {
             fileHandler.sortMemberByName();
