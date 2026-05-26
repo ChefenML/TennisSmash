@@ -133,7 +133,7 @@ public class SmashUI {
     private void showChairmanMenu(){
         System.out.println("\n--- KLUBFORMAND MENU ---");
         System.out.println(GREEN + "1." + RESET + " Tilføj nyt medlem");
-        System.out.println(GREEN + "2." + RESET + " Vis liste over alle medlemmere");
+        System.out.println(GREEN + "2." + RESET + " Vis liste over alle medlemmer");
         System.out.println(GREEN + "3." + RESET + " Vis liste sorteret");
         System.out.println(GREEN + "4." + RESET + " Gem ændringer");
         System.out.println(GREEN + "0." + RESET + " Afslut");
